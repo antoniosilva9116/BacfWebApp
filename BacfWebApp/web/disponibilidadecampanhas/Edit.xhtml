@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDisponibilidadecampanhasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditDisponibilidadecampanhasLabel_disponibilidadeCampanhasID}" for="disponibilidadeCampanhasID" />
+                    <h:inputText id="disponibilidadeCampanhasID" value="#{disponibilidadecampanhasController.selected.disponibilidadeCampanhasID}" title="#{bundle.EditDisponibilidadecampanhasTitle_disponibilidadeCampanhasID}" required="true" requiredMessage="#{bundle.EditDisponibilidadecampanhasRequiredMessage_disponibilidadeCampanhasID}"/>
+                    <h:outputLabel value="#{bundle.EditDisponibilidadecampanhasLabel_segunda}" for="segunda" />
+                    <h:inputText id="segunda" value="#{disponibilidadecampanhasController.selected.segunda}" title="#{bundle.EditDisponibilidadecampanhasTitle_segunda}" required="true" requiredMessage="#{bundle.EditDisponibilidadecampanhasRequiredMessage_segunda}"/>
+                    <h:outputLabel value="#{bundle.EditDisponibilidadecampanhasLabel_terca}" for="terca" />
+                    <h:inputText id="terca" value="#{disponibilidadecampanhasController.selected.terca}" title="#{bundle.EditDisponibilidadecampanhasTitle_terca}" required="true" requiredMessage="#{bundle.EditDisponibilidadecampanhasRequiredMessage_terca}"/>
+                    <h:outputLabel value="#{bundle.EditDisponibilidadecampanhasLabel_quarta}" for="quarta" />
+                    <h:inputText id="quarta" value="#{disponibilidadecampanhasController.selected.quarta}" title="#{bundle.EditDisponibilidadecampanhasTitle_quarta}" required="true" requiredMessage="#{bundle.EditDisponibilidadecampanhasRequiredMessage_quarta}"/>
+                    <h:outputLabel value="#{bundle.EditDisponibilidadecampanhasLabel_quinta}" for="quinta" />
+                    <h:inputText id="quinta" value="#{disponibilidadecampanhasController.selected.quinta}" title="#{bundle.EditDisponibilidadecampanhasTitle_quinta}" required="true" requiredMessage="#{bundle.EditDisponibilidadecampanhasRequiredMessage_quinta}"/>
+                    <h:outputLabel value="#{bundle.EditDisponibilidadecampanhasLabel_sexta}" for="sexta" />
+                    <h:inputText id="sexta" value="#{disponibilidadecampanhasController.selected.sexta}" title="#{bundle.EditDisponibilidadecampanhasTitle_sexta}" required="true" requiredMessage="#{bundle.EditDisponibilidadecampanhasRequiredMessage_sexta}"/>
+                    <h:outputLabel value="#{bundle.EditDisponibilidadecampanhasLabel_sabado}" for="sabado" />
+                    <h:inputText id="sabado" value="#{disponibilidadecampanhasController.selected.sabado}" title="#{bundle.EditDisponibilidadecampanhasTitle_sabado}" required="true" requiredMessage="#{bundle.EditDisponibilidadecampanhasRequiredMessage_sabado}"/>
+                    <h:outputLabel value="#{bundle.EditDisponibilidadecampanhasLabel_domingo}" for="domingo" />
+                    <h:inputText id="domingo" value="#{disponibilidadecampanhasController.selected.domingo}" title="#{bundle.EditDisponibilidadecampanhasTitle_domingo}" required="true" requiredMessage="#{bundle.EditDisponibilidadecampanhasRequiredMessage_domingo}"/>
+                    <h:outputLabel value="#{bundle.EditDisponibilidadecampanhasLabel_voluntarioVoluntarioID}" for="voluntarioVoluntarioID" />
+                    <h:selectOneMenu id="voluntarioVoluntarioID" value="#{disponibilidadecampanhasController.selected.voluntarioVoluntarioID}" title="#{bundle.EditDisponibilidadecampanhasTitle_voluntarioVoluntarioID}" required="true" requiredMessage="#{bundle.EditDisponibilidadecampanhasRequiredMessage_voluntarioVoluntarioID}">
+                        <f:selectItems value="#{voluntarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{disponibilidadecampanhasController.update}" value="#{bundle.EditDisponibilidadecampanhasSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditDisponibilidadecampanhasViewLink}"/>
+                <br />
+                <h:commandLink action="#{disponibilidadecampanhasController.prepareList}" value="#{bundle.EditDisponibilidadecampanhasShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditDisponibilidadecampanhasIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEquipaTurnoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListEquipaTurnoEmpty}" rendered="#{equipaTurnoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{equipaTurnoController.items.rowCount > 0}">
+                    <h:outputText value="#{equipaTurnoController.pagination.pageFirstItem + 1}..#{equipaTurnoController.pagination.pageLastItem + 1}/#{equipaTurnoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{equipaTurnoController.previous}" value="#{bundle.Previous} #{equipaTurnoController.pagination.pageSize}" rendered="#{equipaTurnoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{equipaTurnoController.next}" value="#{bundle.Next} #{equipaTurnoController.pagination.pageSize}" rendered="#{equipaTurnoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{equipaTurnoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipaTurnoTitle_equipaTurnoID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.equipaTurnoID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipaTurnoTitle_turnoID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.turnoID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipaTurnoTitle_equipaID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.equipaID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{equipaTurnoController.prepareView}" value="#{bundle.ListEquipaTurnoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{equipaTurnoController.prepareEdit}" value="#{bundle.ListEquipaTurnoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{equipaTurnoController.destroy}" value="#{bundle.ListEquipaTurnoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{equipaTurnoController.prepareCreate}" value="#{bundle.ListEquipaTurnoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListEquipaTurnoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

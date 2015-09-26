@@ -1,0 +1,291 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <!-- Bootstrap core CSS -->
+        <link href="webdesign/css/bootstrap.css" rel="stylesheet"/>
+
+        <!-- Add custom CSS here -->
+        <link href="webdesign/css/modern-business.css" rel="stylesheet" />
+        <link href="webdesign/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="webdesign/css/one-page-wonder.css" rel="stylesheet" />
+        <script type="text/javascript">
+            function toggle(id) {
+                var selectedValue = document.getElementById("form:select").value;
+                if (selectedValue === "false")
+                {
+                    var element = document.getElementById('form:local');
+                    if (element.style.display === 'none') {
+                        element.style.display = 'block';
+                    }
+
+                    var element1 = document.getElementById('form:localRecolha');
+                    if (element1.style.display === 'none') {
+                        element1.style.display = 'block';
+                    }
+
+                    var element2 = document.getElementById('form:data');
+                    if (element2.style.display === 'none') {
+                        element2.style.display = 'block';
+
+
+                    }
+
+                    var element3 = document.getElementById('form:dataRecolha');
+                    if (element3.style.display === 'none') {
+                        element3.style.display = 'block';
+                    }
+                } else
+                {
+                    var element = document.getElementById('form:local');
+                    if (element.style.display === 'block') {
+                        element.style.display = 'none';
+                    }
+
+                    var element1 = document.getElementById('form:localRecolha');
+                    if (element1.style.display === 'block') {
+                        element1.style.display = 'none';
+                    }
+
+                    var element2 = document.getElementById('form:data');
+                    if (element2.style.display === 'block') {
+                        element2.style.display = 'none';
+                    }
+
+                    var element3 = document.getElementById('form:dataRecolha');
+                    if (element3.style.display === 'block') {
+                        element3.style.display = 'none';
+                    }
+                }
+            }
+        </script>
+        <script type="text/javascript">
+            function toggleTable() {
+                var selectedValue = document.getElementById('form:table1');
+                selectedValue.style.display = 'block';
+            }
+        </script>
+
+        <script src="webdesign/js/bootstrap.js"></script>
+        <script src="webdesign/js/modern-business.js"></script>
+        <title>Banco Alimentar</title>
+    </h:head>
+    <h:body onunload="#{doacaoController.clearData()}">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+                    <a class="navbar-brand logo-nav" href="home.html">
+                        <img src="http://placehold.it/150x75&amp;text=Logo" />
+                    </a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="home.xhtml"><i class="fa fa-home"></i> Home</a>
+                        </li>
+                        <li><a href="about.xhtml">About</a>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Services <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="account/signin.xhtml"><i class="fa fa-sign-in"></i>  Sign-in</a>
+                                </li>
+                                <li><a href="account/signup.xhtml"><i class="fa fa-save"></i>  Sign-up</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+
+
+        <div id="page-wrapper">
+            <b:container>
+
+                <div class="row">
+                    <div class="col-lg-10">
+                        <b:row>
+                            <b:column col-lg="12">
+                                <h1 class="page-header">Doação <small></small></h1>
+                                <p>Deverá inserir a descrição e a quantidade dos produtos que pretende doar!
+                                </p>
+                            </b:column>
+                        </b:row>
+                        <br></br>
+                        <b:well size="80%">
+                            <h:form id="form" >
+                                <b:row> 
+                                    <b:column>
+                                        <div class="header">
+                                            <h3>Dados da Doação<small> Utilize o formul&aacute;rio abaixo para preencher os dados da doa&ccedil;&atilde;o</small></h3>
+                                        </div>
+                                    </b:column>
+                                    <br></br>
+                                </b:row>
+                                <h:panelGrid id="inform" columns="1" style="width: 100%;">
+                                    <b:row> 
+                                        <b:column>
+                                            <h:outputLabel value="#{bundle.CreateDoacaoLabel_nomeDoador}"  />
+                                            <p><b:inputText id="nomeDoador" value="#{doacaoController.selected.nomeDoador}"/></p>
+                                        </b:column>
+                                    </b:row>
+
+                                    <b:row> 
+                                        <b:column>
+                                            <h:outputLabel value="#{bundle.CreateDoacaoLabel_bi}" for="bi" />
+                                            <p><b:inputText id="bi" value="#{doacaoController.selected.bi}" title="#{bundle.CreateDoacaoTitle_bi}" /></p>
+                                        </b:column>
+                                    </b:row>
+                                    <b:row> 
+                                        <b:column>
+                                            <h:outputLabel value="#{bundle.CreateDoacaoLabel_telefone}" for="telefone" />
+                                            <p><b:inputText id="telefone" value="#{doacaoController.selected.telefone}" title="#{bundle.CreateDoacaoTitle_telefone}" /></p>
+                                        </b:column>
+                                    </b:row>
+
+
+                                    <b:row>
+                                        <b:column>
+                                            <h:outputLabel value="#{bundle.CreateDoacaoLabel_disponibilidade}"/>
+
+                                            <p> <h:selectOneMenu id="select" class="form-control" value="#{doacaoController.selected.disponibilidade}"                                                                 
+                                                                 onchange="toggle('#{doacaoController.selected.disponibilidade}');">
+                                                    <f:selectItem itemValue="true"  itemLabel="Disponilidade Para Deslocar ao Banco Alimentar"/>
+                                                    <f:selectItem itemValue="false" itemLabel="Sem Disponibilidade deslocar ao Banco Alimentar"/>
+                                                </h:selectOneMenu></p>
+                                        </b:column>
+                                    </b:row>
+                                    <b:row>
+                                        <b:column>
+                                            <h:outputLabel id="data" style="display: none;" value="#{bundle.CreateDoacaoLabel_dataRecolha}" for="dataRecolha" />
+                                            <p><p:calendar style="display: none;" showOn="button" pattern="dd/MM/yyyy HH:mm:ss" id="dataRecolha" value="#{doacaoController.selected.dataRecolha}"/></p>
+                                        </b:column>
+                                    </b:row>
+
+                                    <b:row>
+                                        <b:column>
+                                            <h:outputLabel style="display: none;" id="local" value="#{bundle.CreateDoacaoLabel_localRecolha}" for="localRecolha" />
+                                            <p><b:inputText style="display: none;" id="localRecolha" value="#{doacaoController.selected.localRecolha}" title="#{bundle.CreateDoacaoTitle_localRecolha}" /></p>
+                                        </b:column>
+                                    </b:row>
+
+                                    <b:row>
+                                        <b:column>
+                                            <h3> Insira Produtos a Doar:</h3>
+                                        </b:column>
+                                    </b:row>
+                                    <br></br>
+
+                                    <b:row>
+                                        <b:column>
+                                            <h:outputText value="Descri&ccedil;&atilde;o"></h:outputText>
+
+                                            <p><b:inputText value="#{doacaoController.currentItem.descricao}" /></p>
+                                        </b:column>
+                                    </b:row>
+
+                                    <b:row>
+                                        <b:column>
+                                            <h:outputText value="Quantidade"></h:outputText>
+
+                                            <p><b:inputText value="#{doacaoController.currentItem.quantidade}" /></p>
+                                        </b:column>
+                                    </b:row>
+
+
+                                    <b:row>
+                                        <b:column>
+                                            <p><h:outputLabel value="Unidade"/></p>
+                                            <h:selectOneMenu class="form-control" value="#{doacaoController.currentItem.tipoUnidade}">
+                                                <f:selectItem itemValue="Unidades" itemLabel="Unidades"/>
+                                                <f:selectItem itemValue="Quilogramas" itemLabel="Quilogramas"/>
+                                                <f:selectItem itemValue="Toneladas" itemLabel="Toneladas"/>
+                                                <f:selectItem itemValue="Euros" itemLabel="Euros"/>
+                                            </h:selectOneMenu>
+                                        </b:column>
+                                    </b:row>
+                                    <br></br>
+                                    <b:row styleClass="show-grid">
+
+                                        <b:column>
+                                            <b:commandButton   value="Adicionar à lista" ajax="true" action="#{doacaoController.addAction}" update="form:table1" icon="plus-sign" look="info" />
+                                        </b:column>
+
+                                    </b:row>
+                                    <br></br>
+                                    <br></br>
+
+                                    <b:row>
+                                        <b:column>
+                                            <h:dataTable id="table1" value="#{doacaoController.orderList}" var="o"
+                                                         styleClass="table"
+                                                         headerClass="table-header"
+                                                         rowClasses="order-table-odd-row,order-table-even-row"
+
+                                                         >
+
+                                                <h:column>
+                                                    <!-- column header -->
+                                                    <f:facet name="header">Descricao   </f:facet>
+                                                    <!-- row record -->
+                                                    #{o.descricao}
+                                                </h:column>
+
+                                                <h:column>
+                                                    <f:facet name="header">Quantidade   </f:facet>
+                                                        #{o.quantidade}
+                                                </h:column>
+
+                                                <h:column>
+                                                    <f:facet name="header">Tipo   </f:facet>
+                                                        #{o.tipoUnidade}
+                                                </h:column>
+
+                                            </h:dataTable>
+                                        </b:column>
+                                    </b:row>
+
+                                    <b:row>
+                                        <b:column>
+                                            <h:commandButton value="Registar" type="" action="#{doacaoController.create}" class="btn btn-lg btn-success btn-block" />
+                                        </b:column>
+                                    </b:row>
+                                </h:panelGrid>
+                                <!-- actionListener="" /--> 
+                            </h:form>
+
+                        </b:well>
+                        <br/>
+
+                    </div>
+                </div>
+
+
+            </b:container>
+        </div>
+        <!-- JavaScript -->
+
+    </h:body>
+</html>

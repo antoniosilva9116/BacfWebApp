@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"     
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:n="http://java.sun.com/jsf/core"
+      xmlns:m="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Banco Alimentar</title>
+
+        <link href="../webdesign/css/bacf.css" rel="stylesheet" />
+        <!-- Bootstrap core CSS -->
+        <link href="../webdesign/css/bootstrap.css" rel="stylesheet" />
+
+        <!-- font Awesome -->
+        <link href="../webdesign/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+
+
+
+        <!-- Add custom CSS here -->
+        <link href="webdesign/css/modern-business.css" rel="stylesheet" />
+        <link href="webdesign/css/one-page-wonder.css" rel="stylesheet" />
+        <!-- Ionicons -->
+        <link href="../webdesign/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="../webdesign/plugins/fullcalendar/fullcalendar.css" rel="stylesheet"/>
+
+
+        <link href="../webdesign/plugins/select2/select2.css" rel="stylesheet"/>
+
+
+        <!-- Admin LTE -->
+        <link href="../webdesign/css/AdminLTE.css" rel="stylesheet" />
+
+        <!-- SBAdmin Style -->
+        <link href="../webdesign/css/sb-admin.css" rel="stylesheet" />
+        <link href="../webdesign/css/style.css" rel="stylesheet"/>
+
+        <link href="../resources/css/bootjsf.css" rel="stylesheet" />
+        <link type="text/css" rel="stylesheet" href="/BacfWebApp/faces/javax.faces.resource/theme.css?ln=primefaces-bootstrap" />
+    </h:head>
+    <h:body>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+                    <a class="navbar-brand logo-nav" href="home.html">
+                        <img src="http://placehold.it/150x75&amp;text=Logo" />
+                    </a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="home.xhtml"><i class="fa fa-home"></i> Home</a>
+                        </li>
+                        <li><a href="about.xhtml">About</a>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Services <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="account/signin.xhtml"><i class="fa fa-sign-in"></i>  Sign-in</a>
+                                </li>
+                                <li><a href="account/signup.xhtml"><i class="fa fa-save"></i>  Sign-up</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <div id="page-wrapper">
+
+
+            <b:container>
+                <div class="col-lg-12">
+                    <h1 class="page-header">Doa&ccedil;&otilde;es <small>Doa&ccedil;&otilde;es feitas</small></h1>
+                    <p>Utilize o bot&atilde;o de detalhes para visualizar a doacao.</p>
+                </div>
+                <br></br>
+                <br></br>
+
+                <br></br>
+
+                <br></br>
+
+                <div class="row">
+                    <div class="col-lg-10">
+
+                        <h:form id="form">
+                            <p:growl id="msgs" showDetail="true" />
+                            <b:row>
+                                <b:column>
+                                    <p:dataTable id="basicDT" var="doacao" value="#{doacaoController.all}">
+                                        <p:column headerText="Data Doacao">
+                                            <h:outputText value="#{doacao.dataDoacao}" />
+                                        </p:column>
+                                        <p:column headerText="Nome Doador">
+                                            <h:outputText value="#{doacao.nomeDoador}" />
+                                        </p:column>
+                                        <p:column headerText="Local de Recolha">
+                                            <h:outputText value="#{doacao.localRecolha}" />
+                                        </p:column>
+
+                                        <p:column style="width:32px;text-align: center">
+                                            <p:commandButton update=":form:doacaoDetail" oncomplete="PF('doacaoDialog').show()" icon="ui-icon-search" title="View">
+                                                <f:setPropertyActionListener value="#{doacao}" target="#{doacaoController.selected}" />
+                                            </p:commandButton>
+                                        </p:column>
+                                    </p:dataTable>
+                                </b:column>
+                            </b:row>
+                            <p:dialog header="Dados Doa&ccedil;&atilde;o" width="800px" widgetVar="doacaoDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                                <b:row>
+                                    <b:column col-lg="6" span="6" offset="3">
+
+                                        <p:outputPanel styleClass="table" id="doacaoDetail" style="text-align:center;">
+                                            <ui:repeat value="#{doacaoController.selected.itemdoacaoCollection}" var="itemDoacao">
+
+                                                <p:panelGrid  columns="2" rendered="#{not empty doacaoController.selected}" columnClasses="value,value">
+
+                                                    <h:outputLabel style="width:132px;text-align: center" value="Descri&ccedil;&atilde;o" />
+                                                    <h:outputLabel style="width:132px;text-align: center" value="#{itemDoacao.descricao}" />
+                                                    <h:outputLabel style="width:132px;text-align: center" value="Quantidade" />
+                                                    <h:outputLabel style="width:132px;text-align: center" value="#{itemDoacao.quantidade} #{itemDoacao.tipoUnidade}" />
+                                           
+                                                </p:panelGrid>
+                                            </ui:repeat>
+
+                                        </p:outputPanel>
+                                    </b:column>
+                                </b:row>
+                                <f:facet name="footer">
+
+                                    <b:row >
+                                        <b:column col-xs="12" col-md="8" col-sm="6" span="9">
+                                            <b:column col-xs="6" span="9" offset="6">
+                                                <b:column col-xs="8" span="9" offset="7">
+                                                        <b:commandButton look="primary" size="lg"
+                                                                         id="pojoSubmit" value=" Gerar Pdf " 
+                                                                         icon="save" update="displayThemes"
+                                                                         actionListener="#{turnosController.values}" 
+                                                                         style="margin-top:15px; margin-left: 30px; margin-bottom: 15px;" >
+                                                        <f:attribute name="campanha" value="#{campanhaController.selected}" />     
+                                                        <f:attribute name="data" value="#{campanhaController.dataSelected.date}" />
+
+                                                    </b:commandButton>
+
+                                                </b:column>
+                                            </b:column>
+                                        </b:column>
+
+
+                                    </b:row>
+
+                                </f:facet>
+                            </p:dialog>
+
+                        </h:form>
+
+                    </div>
+                </div>
+            </b:container>
+        </div>
+
+    </h:body>
+</html>
+

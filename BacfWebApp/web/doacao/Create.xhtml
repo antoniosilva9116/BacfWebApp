@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle1.CreateDoacaoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle1.CreateDoacaoLabel_doacaoID}" for="doacaoID" />
+                    <h:inputText id="doacaoID" value="#{doacaoController.selected.doacaoID}" title="#{bundle1.CreateDoacaoTitle_doacaoID}" required="true" requiredMessage="#{bundle1.CreateDoacaoRequiredMessage_doacaoID}"/>
+                    <h:outputLabel value="#{bundle1.CreateDoacaoLabel_dataDoacao}" for="dataDoacao" />
+                    <h:inputText id="dataDoacao" value="#{doacaoController.selected.dataDoacao}" title="#{bundle1.CreateDoacaoTitle_dataDoacao}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle1.CreateDoacaoLabel_nomeDoador}" for="nomeDoador" />
+                    <h:inputText id="nomeDoador" value="#{doacaoController.selected.nomeDoador}" title="#{bundle1.CreateDoacaoTitle_nomeDoador}" />
+                    <h:outputLabel value="#{bundle1.CreateDoacaoLabel_bi}" for="bi" />
+                    <h:inputText id="bi" value="#{doacaoController.selected.bi}" title="#{bundle1.CreateDoacaoTitle_bi}" />
+                    <h:outputLabel value="#{bundle1.CreateDoacaoLabel_telefone}" for="telefone" />
+                    <h:inputText id="telefone" value="#{doacaoController.selected.telefone}" title="#{bundle1.CreateDoacaoTitle_telefone}" />
+                    <h:outputLabel value="#{bundle1.CreateDoacaoLabel_dataRecolha}" for="dataRecolha" />
+                    <h:inputText id="dataRecolha" value="#{doacaoController.selected.dataRecolha}" title="#{bundle1.CreateDoacaoTitle_dataRecolha}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle1.CreateDoacaoLabel_localRecolha}" for="localRecolha" />
+                    <h:inputText id="localRecolha" value="#{doacaoController.selected.localRecolha}" title="#{bundle1.CreateDoacaoTitle_localRecolha}" />
+                    <h:outputLabel value="#{bundle1.CreateDoacaoLabel_disponibilidade}" for="disponibilidade" />
+                    <h:inputTextarea rows="4" cols="30" id="disponibilidade" value="#{doacaoController.selected.disponibilidade}" title="#{bundle1.CreateDoacaoTitle_disponibilidade}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{doacaoController.create}" value="#{bundle1.CreateDoacaoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{doacaoController.prepareList}" value="#{bundle1.CreateDoacaoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle1.CreateDoacaoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

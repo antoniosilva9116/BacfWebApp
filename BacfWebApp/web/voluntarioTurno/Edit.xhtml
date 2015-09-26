@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditVoluntarioTurnoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditVoluntarioTurnoLabel_turnoVoluntarioID}" for="turnoVoluntarioID" />
+                    <h:inputText id="turnoVoluntarioID" value="#{voluntarioTurnoController.selected.turnoVoluntarioID}" title="#{bundle.EditVoluntarioTurnoTitle_turnoVoluntarioID}" required="true" requiredMessage="#{bundle.EditVoluntarioTurnoRequiredMessage_turnoVoluntarioID}"/>
+                    <h:outputLabel value="#{bundle.EditVoluntarioTurnoLabel_aceite}" for="aceite" />
+                    <h:inputTextarea rows="4" cols="30" id="aceite" value="#{voluntarioTurnoController.selected.aceite}" title="#{bundle.EditVoluntarioTurnoTitle_aceite}" required="true" requiredMessage="#{bundle.EditVoluntarioTurnoRequiredMessage_aceite}"/>
+                    <h:outputLabel value="#{bundle.EditVoluntarioTurnoLabel_turnoID}" for="turnoID" />
+                    <h:selectOneMenu id="turnoID" value="#{voluntarioTurnoController.selected.turnoID}" title="#{bundle.EditVoluntarioTurnoTitle_turnoID}" required="true" requiredMessage="#{bundle.EditVoluntarioTurnoRequiredMessage_turnoID}">
+                        <f:selectItems value="#{turnoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditVoluntarioTurnoLabel_voluntarioID}" for="voluntarioID" />
+                    <h:selectOneMenu id="voluntarioID" value="#{voluntarioTurnoController.selected.voluntarioID}" title="#{bundle.EditVoluntarioTurnoTitle_voluntarioID}" required="true" requiredMessage="#{bundle.EditVoluntarioTurnoRequiredMessage_voluntarioID}">
+                        <f:selectItems value="#{voluntarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{voluntarioTurnoController.update}" value="#{bundle.EditVoluntarioTurnoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditVoluntarioTurnoViewLink}"/>
+                <br />
+                <h:commandLink action="#{voluntarioTurnoController.prepareList}" value="#{bundle.EditVoluntarioTurnoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditVoluntarioTurnoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

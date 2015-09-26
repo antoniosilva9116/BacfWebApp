@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListVoluntarioEquipaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListVoluntarioEquipaEmpty}" rendered="#{voluntarioEquipaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{voluntarioEquipaController.items.rowCount > 0}">
+                    <h:outputText value="#{voluntarioEquipaController.pagination.pageFirstItem + 1}..#{voluntarioEquipaController.pagination.pageLastItem + 1}/#{voluntarioEquipaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{voluntarioEquipaController.previous}" value="#{bundle.Previous} #{voluntarioEquipaController.pagination.pageSize}" rendered="#{voluntarioEquipaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{voluntarioEquipaController.next}" value="#{bundle.Next} #{voluntarioEquipaController.pagination.pageSize}" rendered="#{voluntarioEquipaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{voluntarioEquipaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVoluntarioEquipaTitle_voluntarioEquipaID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.voluntarioEquipaID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVoluntarioEquipaTitle_voluntarioID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.voluntarioID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVoluntarioEquipaTitle_equipaID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.equipaID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{voluntarioEquipaController.prepareView}" value="#{bundle.ListVoluntarioEquipaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{voluntarioEquipaController.prepareEdit}" value="#{bundle.ListVoluntarioEquipaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{voluntarioEquipaController.destroy}" value="#{bundle.ListVoluntarioEquipaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{voluntarioEquipaController.prepareCreate}" value="#{bundle.ListVoluntarioEquipaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListVoluntarioEquipaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

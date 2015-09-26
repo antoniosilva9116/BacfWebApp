@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCampanhaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCampanhaLabel_campanhaID}" for="campanhaID" />
+                    <h:inputText id="campanhaID" value="#{campanhaController.selected.campanhaID}" title="#{bundle.EditCampanhaTitle_campanhaID}" required="true" requiredMessage="#{bundle.EditCampanhaRequiredMessage_campanhaID}"/>
+                    <h:outputLabel value="#{bundle.EditCampanhaLabel_descricao}" for="descricao" />
+                    <h:inputText id="descricao" value="#{campanhaController.selected.descricao}" title="#{bundle.EditCampanhaTitle_descricao}" required="true" requiredMessage="#{bundle.EditCampanhaRequiredMessage_descricao}"/>
+                    <h:outputLabel value="#{bundle.EditCampanhaLabel_tipoDeCampanha}" for="tipoDeCampanha" />
+                    <h:inputText id="tipoDeCampanha" value="#{campanhaController.selected.tipoDeCampanha}" title="#{bundle.EditCampanhaTitle_tipoDeCampanha}" required="true" requiredMessage="#{bundle.EditCampanhaRequiredMessage_tipoDeCampanha}"/>
+                    <h:outputLabel value="#{bundle.EditCampanhaLabel_dataInicio}" for="dataInicio" />
+                    <h:inputText id="dataInicio" value="#{campanhaController.selected.dataInicio}" title="#{bundle.EditCampanhaTitle_dataInicio}" required="true" requiredMessage="#{bundle.EditCampanhaRequiredMessage_dataInicio}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCampanhaLabel_dataFim}" for="dataFim" />
+                    <h:inputText id="dataFim" value="#{campanhaController.selected.dataFim}" title="#{bundle.EditCampanhaTitle_dataFim}" required="true" requiredMessage="#{bundle.EditCampanhaRequiredMessage_dataFim}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                </h:panelGrid>
+                <h:commandLink action="#{campanhaController.update}" value="#{bundle.EditCampanhaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCampanhaViewLink}"/>
+                <br />
+                <h:commandLink action="#{campanhaController.prepareList}" value="#{bundle.EditCampanhaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCampanhaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

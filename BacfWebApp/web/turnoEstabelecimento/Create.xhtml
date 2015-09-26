@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTurnoEstabelecimentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTurnoEstabelecimentoLabel_turnoEstabelecimentoID}" for="turnoEstabelecimentoID" />
+                    <h:inputText id="turnoEstabelecimentoID" value="#{turnoEstabelecimentoController.selected.turnoEstabelecimentoID}" title="#{bundle.CreateTurnoEstabelecimentoTitle_turnoEstabelecimentoID}" required="true" requiredMessage="#{bundle.CreateTurnoEstabelecimentoRequiredMessage_turnoEstabelecimentoID}"/>
+                    <h:outputLabel value="#{bundle.CreateTurnoEstabelecimentoLabel_estabelecimentoID}" for="estabelecimentoID" />
+                    <h:selectOneMenu id="estabelecimentoID" value="#{turnoEstabelecimentoController.selected.estabelecimentoID}" title="#{bundle.CreateTurnoEstabelecimentoTitle_estabelecimentoID}" required="true" requiredMessage="#{bundle.CreateTurnoEstabelecimentoRequiredMessage_estabelecimentoID}">
+                        <f:selectItems value="#{estabelecimentoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateTurnoEstabelecimentoLabel_turnoID}" for="turnoID" />
+                    <h:selectOneMenu id="turnoID" value="#{turnoEstabelecimentoController.selected.turnoID}" title="#{bundle.CreateTurnoEstabelecimentoTitle_turnoID}" required="true" requiredMessage="#{bundle.CreateTurnoEstabelecimentoRequiredMessage_turnoID}">
+                        <f:selectItems value="#{turnoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{turnoEstabelecimentoController.create}" value="#{bundle.CreateTurnoEstabelecimentoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{turnoEstabelecimentoController.prepareList}" value="#{bundle.CreateTurnoEstabelecimentoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTurnoEstabelecimentoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

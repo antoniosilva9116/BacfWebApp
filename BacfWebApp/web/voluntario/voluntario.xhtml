@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui" >
+    <!--xmlns:p="http://xmlns.jcp.org/jsf/passthrough"-->
+    <h:head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+
+        <title>Banco Alimentar</title>
+        <link href="../webdesign/css/bacf.css" rel="stylesheet" />
+        <!-- Bootstrap core CSS -->
+        <link href="../webdesign/css/bootstrap.css" rel="stylesheet" />
+
+        <link href="../webdesign/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"/>
+        <!-- font Awesome -->
+        <link href="../webdesign/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+        <link href="../webdesign/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+
+        <link href="../webdesign/css/iCheck/minimal/blue.css" rel="stylesheet" type="text/css" />
+
+
+        <!-- Ionicons -->
+        <link href="../webdesign/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+
+        <link href="../webdesign/plugins/fancybox/jquery.fancybox.css" rel="stylesheet"/>
+
+        <link href="../webdesign/plugins/fullcalendar/fullcalendar.css" rel="stylesheet"/>
+
+        <link href="../webdesign/plugins/xcharts/xcharts.min.css" rel="stylesheet"/>
+
+        <link href="../webdesign/plugins/select2/select2.css" rel="stylesheet"/>
+
+
+        <!-- Admin LTE --><link rel="stylesheet" href="../webdesign/css/plugins/morris/morris-0.4.3.min.css" />
+        <link href="../webdesign/css/AdminLTE.css" rel="stylesheet" />
+
+        <!-- SBAdmin Style -->
+        <link href="../webdesign/css/sb-admin.css" rel="stylesheet" />
+        <link href="../webdesign/css/plugins/timeline/timeline.css" rel="stylesheet"/>
+        <link href="../webdesign/css/style.css" rel="stylesheet"/>
+
+    </h:head>
+    <h:body onload="CallWebServiceGetEmails('${utilizadorController.user.getUtilizadorID()}');">   
+        <f:metadata>
+            <f:viewParam name="current" value="#{utilizadorController.user}" />
+            <f:event type="preRenderView" listener="#{utilizadorController.validateSession}" />
+        </f:metadata>
+
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+                    <a class="navbar-brand logo-nav" href="home.xhtml">
+                        <img src="http://placehold.it/150x75&amp;text=Logo" />
+                    </a>
+
+                </div>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+                        <ul class="nav navbar-nav navbar-left">
+                            <li>	
+                                <a href="#" class="show-sidebar">
+                                    <i class="fa fa-bars"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+
+
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+
+
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                        <div class="row">
+
+                            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="dropdown">
+                                        <ul class="nav navbar-nav navbar-right">
+
+                                            <li><a href="about.html">About</a>
+                                            </li>
+                                            <li><a href="contact.html">Contact</a>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>  #{utilizadorController.selected.userName} <b class="caret"></b></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+                                                    <li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>
+                                                    <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
+                                                    <li class="divider"></li>
+                                                    <li><h:form class="drop-item"><h:commandLink class=" fa fa-sign-out label" action="#{utilizadorController.logout}" value=" Log Out" ></h:commandLink></h:form></li>   
+
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+        <!--End Header-->
+        <!--Start Container-->
+
+        <div id="main" class="container-f">
+            <div id="sidebar-left" class="col-xs-2 col-sm-2">
+                <ul class="nav main-menu">
+                    <li>
+                        <a href="perfil.xhtml" target="${utilizadorController.user.getUtilizadorID()}" class="active ajax-link">
+                            <i class="fa fa-dashboard"></i>
+                            <span class="hidden-xs">Perfil</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="ajax-link" href="../campanha/campanha.xhtml" target="Campanha">
+                            <i class="fa fa-calendar"></i>
+                            <span class="hidden-xs">Campanha</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="row">
+
+                <!--Start Content-->
+
+
+                <div id="content" class="col-xs-12 col-sm-10">
+
+                    <div id="ajax-content">
+
+                    </div>
+                </div>
+
+                <!--End Content-->
+            </div>
+        </div>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <!--<script src="http://code.jquery.com/jquery.js"></script>-->
+        <script src="../webdesign/plugins/jquery/jquery-2.1.0.min.js"></script>
+        <script src="../webdesign/plugins/jquery-ui/jquery-ui.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="../webdesign/js/bootstrap.js"></script>
+
+        <script src="../webdesign/plugins/justified-gallery/jquery.justifiedgallery.min.js"></script>
+
+        <script src="../webdesign/plugins/tinymce/tinymce.min.js"></script>
+
+        <!-- bootstrap wysihtml5 - text editor -->
+        <link href="../webdesign/js/plugins/bootstrap3-wysihtml5.all.min.js" rel="stylesheet" type="text/javascript" />
+
+
+        <!-- Page Specific Plugins -->
+        <script src="../webdesign/js/raphael/raphael-min.js"></script>
+        <script src="../webdesign/js/morris/morris-0.4.3.min.js"></script>
+        <script src="../webdesign/js/morris/chart-data-morris.js"></script>
+        <script src="../webdesign/js/tablesorter/jquery.tablesorter.js"></script>
+        <script src="../webdesign/js/tablesorter/tables.js"></script>
+
+        <script src="../webdesign/plugins/tinymce/jquery.tinymce.min.js"></script>
+        <!-- All functions for this theme + document.ready processing -->
+        <script src="../webdesign/js/devoops.js"></script>
+        <script src="../webdesign/js/validator.js"></script>
+        <script src="../webdesign/js/AdminLTE/app.js" type="text/javascript"></script>
+
+    </h:body>
+</html>

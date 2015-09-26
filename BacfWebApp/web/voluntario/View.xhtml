@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewVoluntarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewVoluntarioLabel_voluntarioID}"/>
+                    <h:outputText value="#{voluntarioController.selected.voluntarioID}" title="#{bundle.ViewVoluntarioTitle_voluntarioID}"/>
+                    <h:outputText value="#{bundle.ViewVoluntarioLabel_nome}"/>
+                    <h:outputText value="#{voluntarioController.selected.nome}" title="#{bundle.ViewVoluntarioTitle_nome}"/>
+                    <h:outputText value="#{bundle.ViewVoluntarioLabel_bi}"/>
+                    <h:outputText value="#{voluntarioController.selected.bi}" title="#{bundle.ViewVoluntarioTitle_bi}"/>
+                    <h:outputText value="#{bundle.ViewVoluntarioLabel_telefoneCasa}"/>
+                    <h:outputText value="#{voluntarioController.selected.telefoneCasa}" title="#{bundle.ViewVoluntarioTitle_telefoneCasa}"/>
+                    <h:outputText value="#{bundle.ViewVoluntarioLabel_telemovel}"/>
+                    <h:outputText value="#{voluntarioController.selected.telemovel}" title="#{bundle.ViewVoluntarioTitle_telemovel}"/>
+                    <h:outputText value="#{bundle.ViewVoluntarioLabel_telefoneTrabalho}"/>
+                    <h:outputText value="#{voluntarioController.selected.telefoneTrabalho}" title="#{bundle.ViewVoluntarioTitle_telefoneTrabalho}"/>
+                    <h:outputText value="#{bundle.ViewVoluntarioLabel_email}"/>
+                    <h:outputText value="#{voluntarioController.selected.email}" title="#{bundle.ViewVoluntarioTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewVoluntarioLabel_dataNascimento}"/>
+                    <h:outputText value="#{voluntarioController.selected.dataNascimento}" title="#{bundle.ViewVoluntarioTitle_dataNascimento}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewVoluntarioLabel_profissao}"/>
+                    <h:outputText value="#{voluntarioController.selected.profissao}" title="#{bundle.ViewVoluntarioTitle_profissao}"/>
+                    <h:outputText value="#{bundle.ViewVoluntarioLabel_sexo}"/>
+                    <h:outputText value="#{voluntarioController.selected.sexo}" title="#{bundle.ViewVoluntarioTitle_sexo}"/>
+                    <h:outputText value="#{bundle.ViewVoluntarioLabel_utilizadorID}"/>
+                    <h:outputText value="#{voluntarioController.selected.utilizadorID}" title="#{bundle.ViewVoluntarioTitle_utilizadorID}"/>
+                    <h:outputText value="#{bundle.ViewVoluntarioLabel_correiosID}"/>
+                    <h:outputText value="#{voluntarioController.selected.correiosID}" title="#{bundle.ViewVoluntarioTitle_correiosID}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{voluntarioController.destroyAndView}" value="#{bundle.ViewVoluntarioDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewVoluntarioEditLink}"/>
+                <br />
+                <h:commandLink action="#{voluntarioController.prepareCreate}" value="#{bundle.ViewVoluntarioCreateLink}" />
+                <br />
+                <h:commandLink action="#{voluntarioController.prepareList}" value="#{bundle.ViewVoluntarioShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewVoluntarioIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

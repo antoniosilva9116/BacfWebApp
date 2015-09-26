@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title>Banco Alimentar</title>
+        <script type="text/javascript">
+            PrimeFaces.locales['pt'] = {
+                closeText: 'Fechar',
+                prevText: 'Anterior',
+                nextText: 'Próximo',
+                currentText: 'Começo',
+                monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+                dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
+                dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+                weekHeader: 'Semana',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                timeOnlyTitle: 'Só Horas',
+                timeText: 'Tempo',
+                hourText: 'Hora',
+                minuteText: 'Minuto',
+                secondText: 'Segundo',
+                currentText: 'Data Atual',
+                        ampm: false,
+                month: 'Mês',
+                week: 'Semana',
+                day: 'Dia',
+                allDayText: 'Todo Dia'
+            };
+        </script>
+    </h:head>
+    <h:body >
+        <br></br>
+        <div id="page-wrapper" >
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Gestão <small></small></h1>
+                    <ol class="breadcrumb">
+                        <li class="active"><i class="fa fa-dashboard"></i> Profile</li>
+                    </ol>
+                </div>
+            </div><!-- /.row -->
+            <div class="col-lg-12">
+                <div class="bs-example">
+                    <ul class="nav nav-tabs" style="margin-bottom: 15px;">
+                        <li class="active"><a href="#Disponibilidade" data-toggle="tab">Registo</a></li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane fade active in" id="Disponibilidade">
+                            <!-- /.panel -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <i class="fa fa-clock-o fa-fw"></i> Campos
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h3 class="page-header panel-heading"> <small>Indique as suas informações</small></h3>
+                                    </div>
+                                </div>
+                                <p></p>
+                                <!-- /.panel-heading -->
+                                <div class="panel-body">
+                                    <div class="login-panel panel panel-default ">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">Register</h3>
+                                        </div>
+                                        <div class="row">
+                                        </div>
+                                        <h:form id="form">
+                                            <div class="row">
+                                                <div class ="col-md-6">
+                                                    <div class="panel-body">
+                                                        <fieldset>
+                                                            <div id="divvolname" class="form-group" >
+                                                                <label id="labelvolname" class="control-label" for="inputSuccess">Nome</label>
+                                                                <h:inputText class="form-control" p:autofocus="" id="inputvolname" onkeyup="if (event.keyCode == '13')
+                                                                            return validateVolName(this)" p:placeholder="Name"
+                                                                             onblur="return validateVolName(this)"    value="#{voluntarioController.selected.nome}" />
+                                                            </div>
+                                                            <div id="divbi" class="form-group" >
+                                                                <label id="labelbi" class="control-label" for="inputSuccess">BI</label>
+                                                                <h:inputText class="form-control" p:autofocus="" id="inputbi" onkeyup="if (event.keyCode == '13')
+                                                                            return validateBI(this)" p:placeholder="Name"
+                                                                             onblur="return validateBI(this)" value="#{voluntarioController.selected.bi}" />
+                                                            </div>
+                                                            <div id="divevolmail" class="form-group">
+                                                                <label id="labelvolemail" class="control-label" for="inputSuccess">Email</label>
+                                                                <h:inputText id="inputvolemail" class="form-control" value="#{voluntarioController.selected.email}" onkeyup="if (event.keyCode == '13')
+                                                                            return validateVolEmail(this)" p:placeholder="Email"
+                                                                             onblur="return validateVolEmail(this)" />
+                                                            </div>
+                                                            <div id="divsexo" class="form-group">
+                                                                <label id="labelsexo" class="control-label" for="inputSuccess">Sexo</label>
+                                                                <h:selectOneMenu class="form-control" value="#{voluntarioController.selected.sexo}" onblur="return validateSexo(this)">
+                                                                    <f:selectItem itemValue="Masculino" itemLabel="Masculino"/>
+                                                                    <f:selectItem itemValue="Feminino" itemLabel="Feminino"/>
+                                                                </h:selectOneMenu>
+                                                            </div>
+                                                            <div id="divdata" class="form-group" align="center">
+                                                                <label id="labeldata" class="control-label" for="inputSuccess">Data Nascimento</label><br></br>
+                                                                <p:calendar pattern="MM/dd/yyyy HH:mm:ss" locale="pt" value="#{voluntarioController.selected.dataNascimento}" yearRange="c-100:c-17" navigator="true"/><br/>
+                                                            </div>
+                                                            <div id="divtel" class="form-group" >
+                                                                <label id="labeltel" class="control-label" for="inputSuccess">Telemóvel</label>
+                                                                <h:inputText class="form-control" id="inputtel" onkeyup="if (event.keyCode == '13')
+                                                                            return validateTel(this, 'tel')" p:placeholder="Name"
+                                                                             onblur="return validateTel(this, 'tel')" value="#{voluntarioController.selected.telemovel}" >
+                                                                </h:inputText>
+                                                            </div>
+                                                            <div id="divtel1" class="form-group" >
+                                                                <label id="labeltel1" class="control-label" for="inputSuccess">Telefone Casa</label>
+                                                                <h:inputText class="form-control" id="inputtel1" onkeyup="if (event.keyCode == '13')
+                                                                            return validateTel(this, 'tel1')" p:placeholder="Name"
+                                                                             onblur="return validateTel(this, 'tel1')" value="#{voluntarioController.selected.telefoneCasa}" />
+                                                            </div>
+                                                            <div id="divtel2" class="form-group" >
+                                                                <label id="labeltel2" class="control-label" for="inputSuccess">Telefone Trabalho</label>
+                                                                <h:inputText class="form-control"  id="inputtel2" onkeyup="if (event.keyCode == '13')
+                                                                            return validateTel(this, 'tel2')" p:placeholder="Name"
+                                                                             onblur="return validateTel(this, 'tel2')" value="#{voluntarioController.selected.telefoneTrabalho}"/>
+                                                            </div>
+                                                            <div id="divprof" class="form-group" >
+                                                                <label id="labelprof" class="control-label" for="inputSuccess">Profiss&atilde;o</label>
+                                                                <h:inputText class="form-control"  id="inputprof" onkeyup="if (event.keyCode == '13')
+                                                                            return validateString(this, 'prof', 'Profissao')" onblur="return validateString(this, 'prof', 'Profissao')"
+                                                                             value="#{voluntarioController.selected.profissao}" />
+                                                            </div>
+                                                            <!-- Change this to a button or input when using this as a form -->
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                                <div class ="col-md-6">
+                                                    <div class="panel-body">
+                                                        <fieldset>
+                                                            <div id="divdistrito" class="form-group" >
+                                                                <label id="labeldistrito" class="control-label" for="inputSuccess">Distrito</label>
+                                                                <h:inputText class="form-control" id="inputdistrito" onkeyup="if (event.keyCode == '13')
+                                                                            return validateString(this, 'distrito', 'Distrito')" onblur="return validateString(this, 'distrito', 'Distrito')" value="#{voluntarioController.correios.distrito}" />
+                                                            </div>                                                     
+                                                            <div id="divconcelho" class="form-group" >
+                                                                <label id="labelconcelho" class="control-label" for="inputSuccess">Concelho</label>
+                                                                <h:inputText class="form-control" id="inputconcelho" onkeyup="if (event.keyCode == '13')
+                                                                            return validateString(this, 'concelho', 'Concelho')" onblur="return validateString(this, 'concelho', 'Concelho')" value="#{voluntarioController.correios.concelho}" />
+                                                            </div>
+                                                            <div id="divlocalidade" class="form-group" >
+                                                                <label id="labellocalidade" class="control-label" for="inputSuccess">Localidade</label>
+                                                                <h:inputText class="form-control" id="inputlocalidade" onkeyup="if (event.keyCode == '13')
+                                                                            return validateString(this, 'localidade', 'Localidade')" onblur="return validateString(this, 'localidade', 'Localidade')" value="#{voluntarioController.correios.localidade}" />
+                                                            </div>
+                                                            <div id="divlocal" class="form-group" >
+                                                                <label id="labellocal" class="control-label" for="inputSuccess">Local</label>
+                                                                <h:inputText class="form-control" id="inputlocal" onkeyup="if (event.keyCode == '13')
+                                                                            return validateString(this, 'local', 'Local')" onblur="return validateString(this, 'local', 'Local')" value="#{voluntarioController.correios.local}" />
+                                                            </div>
+                                                            <div id="divrua" class="form-group" >
+                                                                <label id="labelrua" class="control-label" for="inputSuccess">Rua</label>
+                                                                <h:inputText class="form-control" id="inputrua" onkeyup="if (event.keyCode == '13')
+                                                                            return validateString(this, 'rua', 'Rua')" onblur="return validateString(this, 'rua', 'Rua')" value="#{voluntarioController.correios.rua}" />
+                                                            </div>
+                                                            <div id="divcodpostal" class="form-group">
+                                                                <label id="labelcodpostal" class="control-label" for="inputSuccess">C&oacute;digo-Postal</label>
+                                                                <h:inputText class="form-control" id="inputcodpostal" onkeyup="if (event.keyCode == '13')
+                                                                            return validateCodPostal(this)" onblur="return validateCodPostal(this)" value="#{voluntarioController.correios.codPostal}" />
+                                                            </div>
+                                                            <div id="divnomepostal" class="form-group" >
+                                                                <label id="labelnomepostal" class="control-label" for="inputSuccess">Nome Postal</label>
+                                                                <h:inputText class="form-control" id="inputnomepostal" onkeyup="if (event.keyCode == '13')
+                                                                            return validateString(this, 'nomepostal', 'Nome Postal')" onblur="return validateString(this, 'nomepostal', 'Nome Postal')" value="#{voluntarioController.correios.nomePostal}" />
+                                                            </div>
+                                                        </fieldset>
+                                                        <h:commandButton value="Registar" action="#{voluntarioController.create}" class="btn btn-lg btn-success btn-block" >
+                                                            <f:ajax execute="@form" render="@form" resetValues="true"/>
+                                                        </h:commandButton>
+                                                        <h:panelGroup id="messagePanel1" layout="block">
+                                                            <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                                                        </h:panelGroup>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </h:form>
+                                    </div>
+                                </div>
+                                <!-- /.panel-body -->
+                            </div>
+                            <!-- /.panel --> 
+                        </div>
+                        <div class="tab-pane fade" id="dropdown1">
+                            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
+                        </div>
+                        <div class="tab-pane fade" id="dropdown2">
+                            <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </h:body>
+</html>

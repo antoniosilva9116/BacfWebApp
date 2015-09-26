@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Banco Alimentar</title>
+        
+        <link href="../webdesign/css/bacf.css" rel="stylesheet" />
+        <!-- Bootstrap core CSS -->
+        <link href="../webdesign/css/bootstrap.css" rel="stylesheet" />
+
+        <!-- SBAdmin Style -->
+        <link href="../webdesign/css/sb-admin.css" rel="stylesheet" />
+        <link href="../webdesign/css/style.css" rel="stylesheet"/>
+
+        <link href="../resources/css/bootjsf.css" rel="stylesheet" />
+        <link type="text/css" rel="stylesheet" href="/BacfWebApp/faces/javax.faces.resource/theme.css?ln=primefaces-bootstrap" />
+    </h:head>
+    <h:body>
+
+        <br></br>
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Importação de Voluntários <small></small></h1>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default text-center">
+                    <div class="panel-heading">
+                        <strong>Ficheiros</strong>
+                    </div>
+                 
+                    <h:form enctype="multipart/form-data">
+                        <p:fileUpload value="#{fileUploadController.uploadedFile}" mode="simple"/>
+                        
+                        <h:commandButton id="btnSubmit" class="btn btn-block btn-success btn-block"  action="#{fileUploadController.upload}" value="Save" >
+                            <f:ajax execute="@all" render="@form"/>
+
+                        </h:commandButton> 
+                    </h:form>
+                </div>
+
+            </div>
+        </div>
+
+    </h:body>
+</html>

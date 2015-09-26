@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditVoluntarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditVoluntarioLabel_voluntarioID}" for="voluntarioID" />
+                    <h:inputText id="voluntarioID" value="#{voluntarioController.selected.voluntarioID}" title="#{bundle.EditVoluntarioTitle_voluntarioID}" required="true" requiredMessage="#{bundle.EditVoluntarioRequiredMessage_voluntarioID}"/>
+                    <h:outputLabel value="#{bundle.EditVoluntarioLabel_nome}" for="nome" />
+                    <h:inputText id="nome" value="#{voluntarioController.selected.nome}" title="#{bundle.EditVoluntarioTitle_nome}" required="true" requiredMessage="#{bundle.EditVoluntarioRequiredMessage_nome}"/>
+                    <h:outputLabel value="#{bundle.EditVoluntarioLabel_bi}" for="bi" />
+                    <h:inputText id="bi" value="#{voluntarioController.selected.bi}" title="#{bundle.EditVoluntarioTitle_bi}" />
+                    <h:outputLabel value="#{bundle.EditVoluntarioLabel_telefoneCasa}" for="telefoneCasa" />
+                    <h:inputText id="telefoneCasa" value="#{voluntarioController.selected.telefoneCasa}" title="#{bundle.EditVoluntarioTitle_telefoneCasa}" />
+                    <h:outputLabel value="#{bundle.EditVoluntarioLabel_telemovel}" for="telemovel" />
+                    <h:inputText id="telemovel" value="#{voluntarioController.selected.telemovel}" title="#{bundle.EditVoluntarioTitle_telemovel}" />
+                    <h:outputLabel value="#{bundle.EditVoluntarioLabel_telefoneTrabalho}" for="telefoneTrabalho" />
+                    <h:inputText id="telefoneTrabalho" value="#{voluntarioController.selected.telefoneTrabalho}" title="#{bundle.EditVoluntarioTitle_telefoneTrabalho}" />
+                    <h:outputLabel value="#{bundle.EditVoluntarioLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{voluntarioController.selected.email}" title="#{bundle.EditVoluntarioTitle_email}" />
+                    <h:outputLabel value="#{bundle.EditVoluntarioLabel_dataNascimento}" for="dataNascimento" />
+                    <h:inputText id="dataNascimento" value="#{voluntarioController.selected.dataNascimento}" title="#{bundle.EditVoluntarioTitle_dataNascimento}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditVoluntarioLabel_profissao}" for="profissao" />
+                    <h:inputText id="profissao" value="#{voluntarioController.selected.profissao}" title="#{bundle.EditVoluntarioTitle_profissao}" />
+                    <h:outputLabel value="#{bundle.EditVoluntarioLabel_sexo}" for="sexo" />
+                    <h:inputText id="sexo" value="#{voluntarioController.selected.sexo}" title="#{bundle.EditVoluntarioTitle_sexo}" />
+                    <h:outputLabel value="#{bundle.EditVoluntarioLabel_utilizadorID}" for="utilizadorID" />
+                    <h:selectOneMenu id="utilizadorID" value="#{voluntarioController.selected.utilizadorID}" title="#{bundle.EditVoluntarioTitle_utilizadorID}" >
+                        <f:selectItems value="#{utilizadorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditVoluntarioLabel_correiosID}" for="correiosID" />
+                    <h:selectOneMenu id="correiosID" value="#{voluntarioController.selected.correiosID}" title="#{bundle.EditVoluntarioTitle_correiosID}" required="true" requiredMessage="#{bundle.EditVoluntarioRequiredMessage_correiosID}">
+                        <f:selectItems value="#{correiosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{voluntarioController.update}" value="#{bundle.EditVoluntarioSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditVoluntarioViewLink}"/>
+                <br />
+                <h:commandLink action="#{voluntarioController.prepareList}" value="#{bundle.EditVoluntarioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditVoluntarioIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

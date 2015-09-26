@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRelogiopontoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewRelogiopontoLabel_relogioPontoID}"/>
+                    <h:outputText value="#{relogiopontoController.selected.relogioPontoID}" title="#{bundle.ViewRelogiopontoTitle_relogioPontoID}"/>
+                    <h:outputText value="#{bundle.ViewRelogiopontoLabel_dataRegisto}"/>
+                    <h:outputText value="#{relogiopontoController.selected.dataRegisto}" title="#{bundle.ViewRelogiopontoTitle_dataRegisto}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewRelogiopontoLabel_tipoRegisto}"/>
+                    <h:outputText value="#{relogiopontoController.selected.tipoRegisto}" title="#{bundle.ViewRelogiopontoTitle_tipoRegisto}"/>
+                    <h:outputText value="#{bundle.ViewRelogiopontoLabel_voluntarioID}"/>
+                    <h:outputText value="#{relogiopontoController.selected.voluntarioID}" title="#{bundle.ViewRelogiopontoTitle_voluntarioID}"/>
+                    <h:outputText value="#{bundle.ViewRelogiopontoLabel_campanhaID}"/>
+                    <h:outputText value="#{relogiopontoController.selected.campanhaID}" title="#{bundle.ViewRelogiopontoTitle_campanhaID}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{relogiopontoController.destroyAndView}" value="#{bundle.ViewRelogiopontoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewRelogiopontoEditLink}"/>
+                <br />
+                <h:commandLink action="#{relogiopontoController.prepareCreate}" value="#{bundle.ViewRelogiopontoCreateLink}" />
+                <br />
+                <h:commandLink action="#{relogiopontoController.prepareList}" value="#{bundle.ViewRelogiopontoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewRelogiopontoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

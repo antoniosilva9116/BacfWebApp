@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDisponibilidadecampanhasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListDisponibilidadecampanhasEmpty}" rendered="#{disponibilidadecampanhasController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{disponibilidadecampanhasController.items.rowCount > 0}">
+                    <h:outputText value="#{disponibilidadecampanhasController.pagination.pageFirstItem + 1}..#{disponibilidadecampanhasController.pagination.pageLastItem + 1}/#{disponibilidadecampanhasController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{disponibilidadecampanhasController.previous}" value="#{bundle.Previous} #{disponibilidadecampanhasController.pagination.pageSize}" rendered="#{disponibilidadecampanhasController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{disponibilidadecampanhasController.next}" value="#{bundle.Next} #{disponibilidadecampanhasController.pagination.pageSize}" rendered="#{disponibilidadecampanhasController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{disponibilidadecampanhasController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDisponibilidadecampanhasTitle_disponibilidadeCampanhasID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.disponibilidadeCampanhasID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDisponibilidadecampanhasTitle_segunda}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.segunda}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDisponibilidadecampanhasTitle_terca}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.terca}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDisponibilidadecampanhasTitle_quarta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.quarta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDisponibilidadecampanhasTitle_quinta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.quinta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDisponibilidadecampanhasTitle_sexta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sexta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDisponibilidadecampanhasTitle_sabado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sabado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDisponibilidadecampanhasTitle_domingo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.domingo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDisponibilidadecampanhasTitle_voluntarioVoluntarioID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.voluntarioVoluntarioID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{disponibilidadecampanhasController.prepareView}" value="#{bundle.ListDisponibilidadecampanhasViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{disponibilidadecampanhasController.prepareEdit}" value="#{bundle.ListDisponibilidadecampanhasEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{disponibilidadecampanhasController.destroy}" value="#{bundle.ListDisponibilidadecampanhasDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{disponibilidadecampanhasController.prepareCreate}" value="#{bundle.ListDisponibilidadecampanhasCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListDisponibilidadecampanhasIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

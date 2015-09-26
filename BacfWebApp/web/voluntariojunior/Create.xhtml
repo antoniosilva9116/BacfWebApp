@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateVoluntariojuniorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateVoluntariojuniorLabel_voluntarioJuniorID}" for="voluntarioJuniorID" />
+                    <h:inputText id="voluntarioJuniorID" value="#{voluntariojuniorController.selected.voluntarioJuniorID}" title="#{bundle.CreateVoluntariojuniorTitle_voluntarioJuniorID}" required="true" requiredMessage="#{bundle.CreateVoluntariojuniorRequiredMessage_voluntarioJuniorID}"/>
+                    <h:outputLabel value="#{bundle.CreateVoluntariojuniorLabel_nomeJunior}" for="nomeJunior" />
+                    <h:inputText id="nomeJunior" value="#{voluntariojuniorController.selected.nomeJunior}" title="#{bundle.CreateVoluntariojuniorTitle_nomeJunior}" required="true" requiredMessage="#{bundle.CreateVoluntariojuniorRequiredMessage_nomeJunior}"/>
+                    <h:outputLabel value="#{bundle.CreateVoluntariojuniorLabel_emailJunior}" for="emailJunior" />
+                    <h:inputText id="emailJunior" value="#{voluntariojuniorController.selected.emailJunior}" title="#{bundle.CreateVoluntariojuniorTitle_emailJunior}" required="true" requiredMessage="#{bundle.CreateVoluntariojuniorRequiredMessage_emailJunior}"/>
+                    <h:outputLabel value="#{bundle.CreateVoluntariojuniorLabel_telefoneJunior}" for="telefoneJunior" />
+                    <h:inputText id="telefoneJunior" value="#{voluntariojuniorController.selected.telefoneJunior}" title="#{bundle.CreateVoluntariojuniorTitle_telefoneJunior}" required="true" requiredMessage="#{bundle.CreateVoluntariojuniorRequiredMessage_telefoneJunior}"/>
+                    <h:outputLabel value="#{bundle.CreateVoluntariojuniorLabel_voluntarioID}" for="voluntarioID" />
+                    <h:selectOneMenu id="voluntarioID" value="#{voluntariojuniorController.selected.voluntarioID}" title="#{bundle.CreateVoluntariojuniorTitle_voluntarioID}" required="true" requiredMessage="#{bundle.CreateVoluntariojuniorRequiredMessage_voluntarioID}">
+                        <f:selectItems value="#{voluntarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{voluntariojuniorController.create}" value="#{bundle.CreateVoluntariojuniorSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{voluntariojuniorController.prepareList}" value="#{bundle.CreateVoluntariojuniorShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateVoluntariojuniorIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

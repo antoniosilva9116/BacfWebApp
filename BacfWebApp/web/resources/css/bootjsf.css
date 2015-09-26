@@ -1,0 +1,159 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 21/jun/2014, 22:53:36
+    Author     : Antonio Silva
+*/
+
+
+
+
+
+@media screen and (min-width: 992px) {
+    .ui-picklist, .ui-picklist-list {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: auto; 
+        min-width: 280px;
+        min-height: 134px;
+        background: none;
+    }
+    .ui-pick {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: auto; 
+        min-width: 290px;
+        width: 180px;
+        min-height: 134px;
+        background: none;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .ui-picklist, .ui-picklist-list {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: auto;
+        min-width: 100px;
+        min-height: 160px;
+        background: none;
+    }
+    .ui-pick{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: auto; 
+        min-width: 290px;
+        min-height: 134px;
+        background: none;
+    }
+}
+
+
+
+
+
+
+.ui-widget-content {
+    border: none;
+    /* border: 1px solid #a8a8a8; */
+    /* background: #ffffff; */
+    /* color: #4f4f4f; */
+}
+
+.ui-inputfield, .ui-widget-content 
+.ui-inputfield, .ui-widget-header .ui-inputfield
+{
+    width:100%;
+}
+
+.hasDatepicker
+{
+    width:75%;
+}
+
+
+.ui-button-text-icon-primary.ui-button-icon-only .ui-button-icon-primary {
+    left: 50%;
+}
+
+.ui-button-icon-only .ui-icon {
+    left: 50%;
+    margin-left: -8px;
+}
+
+.ui-button-icon-only .ui-icon, .ui-button-text-icon-primary .ui-icon, .ui-button-text-icon-secondary .ui-icon, .ui-button-text-icons .ui-icon, .ui-button-icons-only .ui-icon {
+    position: absolute;
+    top: 50%;
+    margin-top: -8px;
+}
+
+.ui-icon {
+    display: block;
+    text-indent: -99999px;
+    overflow: hidden;
+    background-repeat: no-repeat;
+}
+
+.ui-widget {
+    font-size: 99% !important;
+}
+
+.ui-picklist .ui-picklist-filter-container .ui-icon {
+    position: absolute;
+    top: 5px;
+    right: 2px;
+}
+
+.ui-picklist .ui-picklist-filter {
+    padding-right: 32px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.ui-icon {
+    display: block;
+    text-indent: -99999px;
+    overflow: hidden;
+    background-repeat: no-repeat;
+}
+
+.ui-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.ui-icon {
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.ui-selectonemenu .ui-selectonemenu-trigger{
+    width: 23px;
+    background: none #ffffff;
+    border-image: none;
+    border:none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

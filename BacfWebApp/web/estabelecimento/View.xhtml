@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEstabelecimentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEstabelecimentoLabel_estabelecimentoID}"/>
+                    <h:outputText value="#{estabelecimentoController.selected.estabelecimentoID}" title="#{bundle.ViewEstabelecimentoTitle_estabelecimentoID}"/>
+                    <h:outputText value="#{bundle.ViewEstabelecimentoLabel_codigo}"/>
+                    <h:outputText value="#{estabelecimentoController.selected.codigo}" title="#{bundle.ViewEstabelecimentoTitle_codigo}"/>
+                    <h:outputText value="#{bundle.ViewEstabelecimentoLabel_nome}"/>
+                    <h:outputText value="#{estabelecimentoController.selected.nome}" title="#{bundle.ViewEstabelecimentoTitle_nome}"/>
+                    <h:outputText value="#{bundle.ViewEstabelecimentoLabel_cadeia}"/>
+                    <h:outputText value="#{estabelecimentoController.selected.cadeia}" title="#{bundle.ViewEstabelecimentoTitle_cadeia}"/>
+                    <h:outputText value="#{bundle.ViewEstabelecimentoLabel_gerente}"/>
+                    <h:outputText value="#{estabelecimentoController.selected.gerente}" title="#{bundle.ViewEstabelecimentoTitle_gerente}"/>
+                    <h:outputText value="#{bundle.ViewEstabelecimentoLabel_telefone}"/>
+                    <h:outputText value="#{estabelecimentoController.selected.telefone}" title="#{bundle.ViewEstabelecimentoTitle_telefone}"/>
+                    <h:outputText value="#{bundle.ViewEstabelecimentoLabel_fax}"/>
+                    <h:outputText value="#{estabelecimentoController.selected.fax}" title="#{bundle.ViewEstabelecimentoTitle_fax}"/>
+                    <h:outputText value="#{bundle.ViewEstabelecimentoLabel_telemovel}"/>
+                    <h:outputText value="#{estabelecimentoController.selected.telemovel}" title="#{bundle.ViewEstabelecimentoTitle_telemovel}"/>
+                    <h:outputText value="#{bundle.ViewEstabelecimentoLabel_tipo}"/>
+                    <h:outputText value="#{estabelecimentoController.selected.tipo}" title="#{bundle.ViewEstabelecimentoTitle_tipo}"/>
+                    <h:outputText value="#{bundle.ViewEstabelecimentoLabel_area}"/>
+                    <h:outputText value="#{estabelecimentoController.selected.area}" title="#{bundle.ViewEstabelecimentoTitle_area}"/>
+                    <h:outputText value="#{bundle.ViewEstabelecimentoLabel_hrams}"/>
+                    <h:outputText value="#{estabelecimentoController.selected.hrams}" title="#{bundle.ViewEstabelecimentoTitle_hrams}"/>
+                    <h:outputText value="#{bundle.ViewEstabelecimentoLabel_hrfms}"/>
+                    <h:outputText value="#{estabelecimentoController.selected.hrfms}" title="#{bundle.ViewEstabelecimentoTitle_hrfms}"/>
+                    <h:outputText value="#{bundle.ViewEstabelecimentoLabel_hrfts}"/>
+                    <h:outputText value="#{estabelecimentoController.selected.hrfts}" title="#{bundle.ViewEstabelecimentoTitle_hrfts}"/>
+                    <h:outputText value="#{bundle.ViewEstabelecimentoLabel_hramd}"/>
+                    <h:outputText value="#{estabelecimentoController.selected.hramd}" title="#{bundle.ViewEstabelecimentoTitle_hramd}"/>
+                    <h:outputText value="#{bundle.ViewEstabelecimentoLabel_hrfmd}"/>
+                    <h:outputText value="#{estabelecimentoController.selected.hrfmd}" title="#{bundle.ViewEstabelecimentoTitle_hrfmd}"/>
+                    <h:outputText value="#{bundle.ViewEstabelecimentoLabel_hratd}"/>
+                    <h:outputText value="#{estabelecimentoController.selected.hratd}" title="#{bundle.ViewEstabelecimentoTitle_hratd}"/>
+                    <h:outputText value="#{bundle.ViewEstabelecimentoLabel_hrftd}"/>
+                    <h:outputText value="#{estabelecimentoController.selected.hrftd}" title="#{bundle.ViewEstabelecimentoTitle_hrftd}"/>
+                    <h:outputText value="#{bundle.ViewEstabelecimentoLabel_tipoDoEstabelecimento}"/>
+                    <h:outputText value="#{estabelecimentoController.selected.tipoDoEstabelecimento}" title="#{bundle.ViewEstabelecimentoTitle_tipoDoEstabelecimento}"/>
+                    <h:outputText value="#{bundle.ViewEstabelecimentoLabel_correiosID}"/>
+                    <h:outputText value="#{estabelecimentoController.selected.correiosID}" title="#{bundle.ViewEstabelecimentoTitle_correiosID}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{estabelecimentoController.destroyAndView}" value="#{bundle.ViewEstabelecimentoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewEstabelecimentoEditLink}"/>
+                <br />
+                <h:commandLink action="#{estabelecimentoController.prepareCreate}" value="#{bundle.ViewEstabelecimentoCreateLink}" />
+                <br />
+                <h:commandLink action="#{estabelecimentoController.prepareList}" value="#{bundle.ViewEstabelecimentoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewEstabelecimentoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

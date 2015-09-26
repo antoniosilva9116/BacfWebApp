@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewModulogrupoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewModulogrupoLabel_modulogrupoPK_moduloGrupoID}"/>
+                    <h:outputText value="#{modulogrupoController.selected.modulogrupoPK.moduloGrupoID}" title="#{bundle.ViewModulogrupoTitle_modulogrupoPK_moduloGrupoID}"/>
+                    <h:outputText value="#{bundle.ViewModulogrupoLabel_grupo}"/>
+                    <h:outputText value="#{modulogrupoController.selected.grupo}" title="#{bundle.ViewModulogrupoTitle_grupo}"/>
+                    <h:outputText value="#{bundle.ViewModulogrupoLabel_modulo}"/>
+                    <h:outputText value="#{modulogrupoController.selected.modulo}" title="#{bundle.ViewModulogrupoTitle_modulo}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{modulogrupoController.destroyAndView}" value="#{bundle.ViewModulogrupoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewModulogrupoEditLink}"/>
+                <br />
+                <h:commandLink action="#{modulogrupoController.prepareCreate}" value="#{bundle.ViewModulogrupoCreateLink}" />
+                <br />
+                <h:commandLink action="#{modulogrupoController.prepareList}" value="#{bundle.ViewModulogrupoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewModulogrupoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

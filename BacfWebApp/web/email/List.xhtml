@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEmailTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListEmailEmpty}" rendered="#{emailController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{emailController.items.rowCount > 0}">
+                    <h:outputText value="#{emailController.pagination.pageFirstItem + 1}..#{emailController.pagination.pageLastItem + 1}/#{emailController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{emailController.previous}" value="#{bundle.Previous} #{emailController.pagination.pageSize}" rendered="#{emailController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{emailController.next}" value="#{bundle.Next} #{emailController.pagination.pageSize}" rendered="#{emailController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{emailController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEmailTitle_emailID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.emailID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEmailTitle_dataEnvio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataEnvio}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEmailTitle_lead}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lead}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEmailTitle_corpo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.corpo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEmailTitle_utilizadorRemetenteID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.utilizadorRemetenteID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEmailTitle_utilizadorDestinatarioID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.utilizadorDestinatarioID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{emailController.prepareView}" value="#{bundle.ListEmailViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{emailController.prepareEdit}" value="#{bundle.ListEmailEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{emailController.destroy}" value="#{bundle.ListEmailDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{emailController.prepareCreate}" value="#{bundle.ListEmailCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListEmailIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

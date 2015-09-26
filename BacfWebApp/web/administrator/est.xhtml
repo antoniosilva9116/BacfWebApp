@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Banco Alimentar</title>
+    </h:head >
+
+    <h:body>
+        <br></br>
+        <div id="page-wrapper" >
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Estatísticas<small></small></h1>
+                    <ol class="breadcrumb">
+                        <li class="active"><i class="fa fa-dashboard"></i> Estatisticas</li>
+                    </ol>
+
+                </div>
+            </div><!-- /.row -->
+            <div class="col-lg-12">
+
+                <div class="bs-example">
+                    <ul class="nav nav-tabs" style="margin-bottom: 15px;">
+                        <li class="active"><a href="#Estatisticas" data-toggle="tab">Estatística</a></li>
+
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+
+                        <div class="tab-pane fade active in" id="Estatisticas">
+                            <!-- /.panel -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <i class="fa fa-clock-o fa-fw"></i> Estatísticas Gerais
+                                </div>
+
+                                <p></p>
+                                <!-- /.panel-heading -->
+                                <div class="panel-body">
+
+                                    <div class="row">
+                                        <div class ="col-md-4">
+                                            <div class="panel-body">
+                                                <div class="small-box bg-aqua">
+                                                    <div class="inner">
+                                                        <h3 id="utilizadores">
+                                                            150
+                                                        </h3>
+                                                        <p>
+                                                            Utilizadores
+                                                        </p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-bag"></i>
+                                                    </div>
+                                                    <a href="#" class="small-box-footer">
+                                                        +Info <i class="fa fa-arrow-circle-right"></i>
+                                                    </a>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class ="col-md-4">
+                                            <div class="panel-body">
+                                                <div class="small-box bg-red">
+                                                    <div  class="inner">
+                                                        <h3 id="emptyField">
+                                                            150
+                                                        </h3>
+                                                        <p>
+                                                            Dados Incompletos
+                                                        </p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-person"></i>
+                                                    </div>
+                                                    <a href="#" class="small-box-footer">
+                                                        +Info <i class="fa fa-arrow-circle-right"></i>
+                                                    </a>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class ="col-md-4">
+                                            <div class="panel-body">
+                                                <div class="small-box bg-green">
+                                                    <div  class="inner">
+                                                        <h3 id="volNRegist">
+                                                            150
+                                                        </h3>
+                                                        <p>
+                                                            Voluntarios Não Registados
+                                                        </p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-android-friends"></i>
+                                                    </div>
+                                                    <a href="#" class="small-box-footer">
+                                                        +Info <i class="fa fa-arrow-circle-right"></i>
+                                                    </a>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class ="col-md-6">
+                                            <div id="piechart_3d" style="width: 900px; height: 500px;"></div>
+                                        </div>
+
+                                    </div>
+                                </div> 
+
+                                <!-- /.panel-body -->
+                            </div>
+                            <!-- /.panel --> 
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </h:body>
+</html>

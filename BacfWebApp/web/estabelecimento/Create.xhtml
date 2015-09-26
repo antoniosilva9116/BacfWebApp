@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateEstabelecimentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateEstabelecimentoLabel_estabelecimentoID}" for="estabelecimentoID" />
+                    <h:inputText id="estabelecimentoID" value="#{estabelecimentoController.selected.estabelecimentoID}" title="#{bundle.CreateEstabelecimentoTitle_estabelecimentoID}" required="true" requiredMessage="#{bundle.CreateEstabelecimentoRequiredMessage_estabelecimentoID}"/>
+                    <h:outputLabel value="#{bundle.CreateEstabelecimentoLabel_codigo}" for="codigo" />
+                    <h:inputText id="codigo" value="#{estabelecimentoController.selected.codigo}" title="#{bundle.CreateEstabelecimentoTitle_codigo}" />
+                    <h:outputLabel value="#{bundle.CreateEstabelecimentoLabel_nome}" for="nome" />
+                    <h:inputText id="nome" value="#{estabelecimentoController.selected.nome}" title="#{bundle.CreateEstabelecimentoTitle_nome}" />
+                    <h:outputLabel value="#{bundle.CreateEstabelecimentoLabel_cadeia}" for="cadeia" />
+                    <h:inputText id="cadeia" value="#{estabelecimentoController.selected.cadeia}" title="#{bundle.CreateEstabelecimentoTitle_cadeia}" />
+                    <h:outputLabel value="#{bundle.CreateEstabelecimentoLabel_gerente}" for="gerente" />
+                    <h:inputText id="gerente" value="#{estabelecimentoController.selected.gerente}" title="#{bundle.CreateEstabelecimentoTitle_gerente}" />
+                    <h:outputLabel value="#{bundle.CreateEstabelecimentoLabel_telefone}" for="telefone" />
+                    <h:inputText id="telefone" value="#{estabelecimentoController.selected.telefone}" title="#{bundle.CreateEstabelecimentoTitle_telefone}" />
+                    <h:outputLabel value="#{bundle.CreateEstabelecimentoLabel_fax}" for="fax" />
+                    <h:inputText id="fax" value="#{estabelecimentoController.selected.fax}" title="#{bundle.CreateEstabelecimentoTitle_fax}" />
+                    <h:outputLabel value="#{bundle.CreateEstabelecimentoLabel_telemovel}" for="telemovel" />
+                    <h:inputText id="telemovel" value="#{estabelecimentoController.selected.telemovel}" title="#{bundle.CreateEstabelecimentoTitle_telemovel}" />
+                    <h:outputLabel value="#{bundle.CreateEstabelecimentoLabel_tipo}" for="tipo" />
+                    <h:inputText id="tipo" value="#{estabelecimentoController.selected.tipo}" title="#{bundle.CreateEstabelecimentoTitle_tipo}" />
+                    <h:outputLabel value="#{bundle.CreateEstabelecimentoLabel_area}" for="area" />
+                    <h:inputText id="area" value="#{estabelecimentoController.selected.area}" title="#{bundle.CreateEstabelecimentoTitle_area}" />
+                    <h:outputLabel value="#{bundle.CreateEstabelecimentoLabel_hrams}" for="hrams" />
+                    <h:inputText id="hrams" value="#{estabelecimentoController.selected.hrams}" title="#{bundle.CreateEstabelecimentoTitle_hrams}" />
+                    <h:outputLabel value="#{bundle.CreateEstabelecimentoLabel_hrfms}" for="hrfms" />
+                    <h:inputText id="hrfms" value="#{estabelecimentoController.selected.hrfms}" title="#{bundle.CreateEstabelecimentoTitle_hrfms}" />
+                    <h:outputLabel value="#{bundle.CreateEstabelecimentoLabel_hrfts}" for="hrfts" />
+                    <h:inputText id="hrfts" value="#{estabelecimentoController.selected.hrfts}" title="#{bundle.CreateEstabelecimentoTitle_hrfts}" />
+                    <h:outputLabel value="#{bundle.CreateEstabelecimentoLabel_hramd}" for="hramd" />
+                    <h:inputText id="hramd" value="#{estabelecimentoController.selected.hramd}" title="#{bundle.CreateEstabelecimentoTitle_hramd}" />
+                    <h:outputLabel value="#{bundle.CreateEstabelecimentoLabel_hrfmd}" for="hrfmd" />
+                    <h:inputText id="hrfmd" value="#{estabelecimentoController.selected.hrfmd}" title="#{bundle.CreateEstabelecimentoTitle_hrfmd}" />
+                    <h:outputLabel value="#{bundle.CreateEstabelecimentoLabel_hratd}" for="hratd" />
+                    <h:inputText id="hratd" value="#{estabelecimentoController.selected.hratd}" title="#{bundle.CreateEstabelecimentoTitle_hratd}" />
+                    <h:outputLabel value="#{bundle.CreateEstabelecimentoLabel_hrftd}" for="hrftd" />
+                    <h:inputText id="hrftd" value="#{estabelecimentoController.selected.hrftd}" title="#{bundle.CreateEstabelecimentoTitle_hrftd}" />
+                    <h:outputLabel value="#{bundle.CreateEstabelecimentoLabel_tipoDoEstabelecimento}" for="tipoDoEstabelecimento" />
+                    <h:inputTextarea rows="4" cols="30" id="tipoDoEstabelecimento" value="#{estabelecimentoController.selected.tipoDoEstabelecimento}" title="#{bundle.CreateEstabelecimentoTitle_tipoDoEstabelecimento}" />
+                    <h:outputLabel value="#{bundle.CreateEstabelecimentoLabel_correiosID}" for="correiosID" />
+                    <h:selectOneMenu id="correiosID" value="#{estabelecimentoController.selected.correiosID}" title="#{bundle.CreateEstabelecimentoTitle_correiosID}" required="true" requiredMessage="#{bundle.CreateEstabelecimentoRequiredMessage_correiosID}">
+                        <f:selectItems value="#{correiosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{estabelecimentoController.create}" value="#{bundle.CreateEstabelecimentoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{estabelecimentoController.prepareList}" value="#{bundle.CreateEstabelecimentoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateEstabelecimentoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

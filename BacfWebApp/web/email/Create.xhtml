@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateEmailTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateEmailLabel_emailID}" for="emailID" />
+                    <h:inputText id="emailID" value="#{emailController.selected.emailID}" title="#{bundle.CreateEmailTitle_emailID}" required="true" requiredMessage="#{bundle.CreateEmailRequiredMessage_emailID}"/>
+                    <h:outputLabel value="#{bundle.CreateEmailLabel_dataEnvio}" for="dataEnvio" />
+                    <h:inputText id="dataEnvio" value="#{emailController.selected.dataEnvio}" title="#{bundle.CreateEmailTitle_dataEnvio}" required="true" requiredMessage="#{bundle.CreateEmailRequiredMessage_dataEnvio}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateEmailLabel_lead}" for="lead" />
+                    <h:inputText id="lead" value="#{emailController.selected.lead}" title="#{bundle.CreateEmailTitle_lead}" required="true" requiredMessage="#{bundle.CreateEmailRequiredMessage_lead}"/>
+                    <h:outputLabel value="#{bundle.CreateEmailLabel_corpo}" for="corpo" />
+                    <h:inputText id="corpo" value="#{emailController.selected.corpo}" title="#{bundle.CreateEmailTitle_corpo}" required="true" requiredMessage="#{bundle.CreateEmailRequiredMessage_corpo}"/>
+                    <h:outputLabel value="#{bundle.CreateEmailLabel_utilizadorRemetenteID}" for="utilizadorRemetenteID" />
+                    <h:selectOneMenu id="utilizadorRemetenteID" value="#{emailController.selected.utilizadorRemetenteID}" title="#{bundle.CreateEmailTitle_utilizadorRemetenteID}" required="true" requiredMessage="#{bundle.CreateEmailRequiredMessage_utilizadorRemetenteID}">
+                        <f:selectItems value="#{utilizadorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateEmailLabel_utilizadorDestinatarioID}" for="utilizadorDestinatarioID" />
+                    <h:selectOneMenu id="utilizadorDestinatarioID" value="#{emailController.selected.utilizadorDestinatarioID}" title="#{bundle.CreateEmailTitle_utilizadorDestinatarioID}" required="true" requiredMessage="#{bundle.CreateEmailRequiredMessage_utilizadorDestinatarioID}">
+                        <f:selectItems value="#{utilizadorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{emailController.create}" value="#{bundle.CreateEmailSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{emailController.prepareList}" value="#{bundle.CreateEmailShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateEmailIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

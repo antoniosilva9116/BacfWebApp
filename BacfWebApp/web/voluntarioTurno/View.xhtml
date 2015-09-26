@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewVoluntarioTurnoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewVoluntarioTurnoLabel_turnoVoluntarioID}"/>
+                    <h:outputText value="#{voluntarioTurnoController.selected.turnoVoluntarioID}" title="#{bundle.ViewVoluntarioTurnoTitle_turnoVoluntarioID}"/>
+                    <h:outputText value="#{bundle.ViewVoluntarioTurnoLabel_aceite}"/>
+                    <h:outputText value="#{voluntarioTurnoController.selected.aceite}" title="#{bundle.ViewVoluntarioTurnoTitle_aceite}"/>
+                    <h:outputText value="#{bundle.ViewVoluntarioTurnoLabel_turnoID}"/>
+                    <h:outputText value="#{voluntarioTurnoController.selected.turnoID}" title="#{bundle.ViewVoluntarioTurnoTitle_turnoID}"/>
+                    <h:outputText value="#{bundle.ViewVoluntarioTurnoLabel_voluntarioID}"/>
+                    <h:outputText value="#{voluntarioTurnoController.selected.voluntarioID}" title="#{bundle.ViewVoluntarioTurnoTitle_voluntarioID}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{voluntarioTurnoController.destroyAndView}" value="#{bundle.ViewVoluntarioTurnoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewVoluntarioTurnoEditLink}"/>
+                <br />
+                <h:commandLink action="#{voluntarioTurnoController.prepareCreate}" value="#{bundle.ViewVoluntarioTurnoCreateLink}" />
+                <br />
+                <h:commandLink action="#{voluntarioTurnoController.prepareList}" value="#{bundle.ViewVoluntarioTurnoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewVoluntarioTurnoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

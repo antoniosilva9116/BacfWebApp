@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+                <p:growl id="msg" showDetail="true" escape="false" />
+             
+                <h3 style="margin-top: 0">Basic PickList</h3>
+                <p:pickList id="pickList" value="#{voluntariosPickListView.voluntarios}" 
+                            var="voluntario" itemLabel="#{voluntario.nome}" itemValue="#{voluntario}" />
+             
+                <p:commandButton id="citySubmit" value="Submit" update="displayVoluntarios" oncomplete="PF('cityDialog').show()" style="margin-top:5px" />
+
+                <p:dialog modal="true" showEffect="fade" hideEffect="fade" widgetVar="cityDialog">  
+                <h:panelGrid id="displayVoluntarios" columns="2">  
+                    <h:outputText value="Source: " style="font-weight:bold"/>  
+                    <ui:repeat value="#{voluntariosPickListView.voluntarios.source}" var="item">  
+                        <h:outputText value="#{voluntario.nome}" style="margin-right:5px" />  
+                    </ui:repeat>  
+
+                    <h:outputText value="Target: " style="font-weight:bold"/>  
+                    <ui:repeat value="#{voluntariosPickListView.voluntarios.target}" var="item">  
+                        <h:outputText value="#{voluntario.nome}" style="margin-right:5px" />  
+                    </ui:repeat>  
+                </h:panelGrid>  
+            </p:dialog>  
+             
+                
+        </h:form>
+    </h:body>
+</html>
+

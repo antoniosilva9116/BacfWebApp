@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListVoluntariojuniorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListVoluntariojuniorEmpty}" rendered="#{voluntariojuniorController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{voluntariojuniorController.items.rowCount > 0}">
+                    <h:outputText value="#{voluntariojuniorController.pagination.pageFirstItem + 1}..#{voluntariojuniorController.pagination.pageLastItem + 1}/#{voluntariojuniorController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{voluntariojuniorController.previous}" value="#{bundle.Previous} #{voluntariojuniorController.pagination.pageSize}" rendered="#{voluntariojuniorController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{voluntariojuniorController.next}" value="#{bundle.Next} #{voluntariojuniorController.pagination.pageSize}" rendered="#{voluntariojuniorController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{voluntariojuniorController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVoluntariojuniorTitle_voluntarioJuniorID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.voluntarioJuniorID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVoluntariojuniorTitle_nomeJunior}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomeJunior}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVoluntariojuniorTitle_emailJunior}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.emailJunior}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVoluntariojuniorTitle_telefoneJunior}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telefoneJunior}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVoluntariojuniorTitle_voluntarioID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.voluntarioID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{voluntariojuniorController.prepareView}" value="#{bundle.ListVoluntariojuniorViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{voluntariojuniorController.prepareEdit}" value="#{bundle.ListVoluntariojuniorEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{voluntariojuniorController.destroy}" value="#{bundle.ListVoluntariojuniorDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{voluntariojuniorController.prepareCreate}" value="#{bundle.ListVoluntariojuniorCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListVoluntariojuniorIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

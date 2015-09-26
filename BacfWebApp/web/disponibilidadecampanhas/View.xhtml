@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDisponibilidadecampanhasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDisponibilidadecampanhasLabel_disponibilidadeCampanhasID}"/>
+                    <h:outputText value="#{disponibilidadecampanhasController.selected.disponibilidadeCampanhasID}" title="#{bundle.ViewDisponibilidadecampanhasTitle_disponibilidadeCampanhasID}"/>
+                    <h:outputText value="#{bundle.ViewDisponibilidadecampanhasLabel_segunda}"/>
+                    <h:outputText value="#{disponibilidadecampanhasController.selected.segunda}" title="#{bundle.ViewDisponibilidadecampanhasTitle_segunda}"/>
+                    <h:outputText value="#{bundle.ViewDisponibilidadecampanhasLabel_terca}"/>
+                    <h:outputText value="#{disponibilidadecampanhasController.selected.terca}" title="#{bundle.ViewDisponibilidadecampanhasTitle_terca}"/>
+                    <h:outputText value="#{bundle.ViewDisponibilidadecampanhasLabel_quarta}"/>
+                    <h:outputText value="#{disponibilidadecampanhasController.selected.quarta}" title="#{bundle.ViewDisponibilidadecampanhasTitle_quarta}"/>
+                    <h:outputText value="#{bundle.ViewDisponibilidadecampanhasLabel_quinta}"/>
+                    <h:outputText value="#{disponibilidadecampanhasController.selected.quinta}" title="#{bundle.ViewDisponibilidadecampanhasTitle_quinta}"/>
+                    <h:outputText value="#{bundle.ViewDisponibilidadecampanhasLabel_sexta}"/>
+                    <h:outputText value="#{disponibilidadecampanhasController.selected.sexta}" title="#{bundle.ViewDisponibilidadecampanhasTitle_sexta}"/>
+                    <h:outputText value="#{bundle.ViewDisponibilidadecampanhasLabel_sabado}"/>
+                    <h:outputText value="#{disponibilidadecampanhasController.selected.sabado}" title="#{bundle.ViewDisponibilidadecampanhasTitle_sabado}"/>
+                    <h:outputText value="#{bundle.ViewDisponibilidadecampanhasLabel_domingo}"/>
+                    <h:outputText value="#{disponibilidadecampanhasController.selected.domingo}" title="#{bundle.ViewDisponibilidadecampanhasTitle_domingo}"/>
+                    <h:outputText value="#{bundle.ViewDisponibilidadecampanhasLabel_voluntarioVoluntarioID}"/>
+                    <h:outputText value="#{disponibilidadecampanhasController.selected.voluntarioVoluntarioID}" title="#{bundle.ViewDisponibilidadecampanhasTitle_voluntarioVoluntarioID}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{disponibilidadecampanhasController.destroyAndView}" value="#{bundle.ViewDisponibilidadecampanhasDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDisponibilidadecampanhasEditLink}"/>
+                <br />
+                <h:commandLink action="#{disponibilidadecampanhasController.prepareCreate}" value="#{bundle.ViewDisponibilidadecampanhasCreateLink}" />
+                <br />
+                <h:commandLink action="#{disponibilidadecampanhasController.prepareList}" value="#{bundle.ViewDisponibilidadecampanhasShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDisponibilidadecampanhasIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

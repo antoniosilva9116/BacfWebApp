@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTurnoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTurnoLabel_turnoID}"/>
+                    <h:outputText value="#{turnoController.selected.turnoID}" title="#{bundle.ViewTurnoTitle_turnoID}"/>
+                    <h:outputText value="#{bundle.ViewTurnoLabel_horaInicio}"/>
+                    <h:outputText value="#{turnoController.selected.horaInicio}" title="#{bundle.ViewTurnoTitle_horaInicio}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewTurnoLabel_horaFim}"/>
+                    <h:outputText value="#{turnoController.selected.horaFim}" title="#{bundle.ViewTurnoTitle_horaFim}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewTurnoLabel_dia}"/>
+                    <h:outputText value="#{turnoController.selected.dia}" title="#{bundle.ViewTurnoTitle_dia}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewTurnoLabel_campanhaID}"/>
+                    <h:outputText value="#{turnoController.selected.campanhaID}" title="#{bundle.ViewTurnoTitle_campanhaID}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{turnoController.destroyAndView}" value="#{bundle.ViewTurnoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewTurnoEditLink}"/>
+                <br />
+                <h:commandLink action="#{turnoController.prepareCreate}" value="#{bundle.ViewTurnoCreateLink}" />
+                <br />
+                <h:commandLink action="#{turnoController.prepareList}" value="#{bundle.ViewTurnoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewTurnoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,37 @@
+.navbar-b {
+    float: left;
+    padding: 0px 13px;
+    font-size: 19px;
+    line-height: 21px;
+    height: 45px;
+}
+@media (min-width: 768px) {
+    .navbar > .container .navbar-b,
+    .navbar > .container-fluid .navbar-b{
+        margin-left: -15px;
+    }
+}
+
+.container-f {
+  padding-right: 15px;
+  padding-left: 0px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.navbar-b:hover,
+.navbar-b:focus{
+    text-decoration: none;
+}
+.navbar-default .navbar-b {
+    color: #ffffff;
+}
+.navbar-default .navbar-b:hover,
+.navbar-default .navbar-b:focus
+{
+    color: #ffffff;
+    background-color: transparent;
+}
+.navbar-inverse .navbar-b{
+    color: #ffffff;
+}

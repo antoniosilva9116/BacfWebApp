@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateNoticiaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateNoticiaLabel_noticiaID}" for="noticiaID" />
+                    <h:inputText id="noticiaID" value="#{noticiaController.selected.noticiaID}" title="#{bundle.CreateNoticiaTitle_noticiaID}" required="true" requiredMessage="#{bundle.CreateNoticiaRequiredMessage_noticiaID}"/>
+                    <h:outputLabel value="#{bundle.CreateNoticiaLabel_lead}" for="lead" />
+                    <h:inputText id="lead" value="#{noticiaController.selected.lead}" title="#{bundle.CreateNoticiaTitle_lead}" required="true" requiredMessage="#{bundle.CreateNoticiaRequiredMessage_lead}"/>
+                    <h:outputLabel value="#{bundle.CreateNoticiaLabel_titulo}" for="titulo" />
+                    <h:inputText id="titulo" value="#{noticiaController.selected.titulo}" title="#{bundle.CreateNoticiaTitle_titulo}" required="true" requiredMessage="#{bundle.CreateNoticiaRequiredMessage_titulo}"/>
+                    <h:outputLabel value="#{bundle.CreateNoticiaLabel_corpo}" for="corpo" />
+                    <h:inputText id="corpo" value="#{noticiaController.selected.corpo}" title="#{bundle.CreateNoticiaTitle_corpo}" required="true" requiredMessage="#{bundle.CreateNoticiaRequiredMessage_corpo}"/>
+                    <h:outputLabel value="#{bundle.CreateNoticiaLabel_utilizadorID}" for="utilizadorID" />
+                    <h:selectOneMenu id="utilizadorID" value="#{noticiaController.selected.utilizadorID}" title="#{bundle.CreateNoticiaTitle_utilizadorID}" required="true" requiredMessage="#{bundle.CreateNoticiaRequiredMessage_utilizadorID}">
+                        <f:selectItems value="#{utilizadorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{noticiaController.create}" value="#{bundle.CreateNoticiaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{noticiaController.prepareList}" value="#{bundle.CreateNoticiaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateNoticiaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

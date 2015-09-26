@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCorreiosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListCorreiosEmpty}" rendered="#{correiosController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{correiosController.items.rowCount > 0}">
+                    <h:outputText value="#{correiosController.pagination.pageFirstItem + 1}..#{correiosController.pagination.pageLastItem + 1}/#{correiosController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{correiosController.previous}" value="#{bundle.Previous} #{correiosController.pagination.pageSize}" rendered="#{correiosController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{correiosController.next}" value="#{bundle.Next} #{correiosController.pagination.pageSize}" rendered="#{correiosController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{correiosController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCorreiosTitle_correiosID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.correiosID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCorreiosTitle_distrito}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.distrito}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCorreiosTitle_concelho}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.concelho}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCorreiosTitle_localidade}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.localidade}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCorreiosTitle_rua}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rua}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCorreiosTitle_local}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.local}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCorreiosTitle_codPostal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codPostal}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCorreiosTitle_nomePostal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomePostal}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{correiosController.prepareView}" value="#{bundle.ListCorreiosViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{correiosController.prepareEdit}" value="#{bundle.ListCorreiosEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{correiosController.destroy}" value="#{bundle.ListCorreiosDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{correiosController.prepareCreate}" value="#{bundle.ListCorreiosCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListCorreiosIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

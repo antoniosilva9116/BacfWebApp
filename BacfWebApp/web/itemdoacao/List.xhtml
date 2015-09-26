@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle1.ListItemdoacaoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle1.ListItemdoacaoEmpty}" rendered="#{itemdoacaoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{itemdoacaoController.items.rowCount > 0}">
+                    <h:outputText value="#{itemdoacaoController.pagination.pageFirstItem + 1}..#{itemdoacaoController.pagination.pageLastItem + 1}/#{itemdoacaoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{itemdoacaoController.previous}" value="#{bundle1.Previous} #{itemdoacaoController.pagination.pageSize}" rendered="#{itemdoacaoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{itemdoacaoController.next}" value="#{bundle1.Next} #{itemdoacaoController.pagination.pageSize}" rendered="#{itemdoacaoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{itemdoacaoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle1.ListItemdoacaoTitle_itemDoacao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.itemDoacao}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle1.ListItemdoacaoTitle_descricao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descricao}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle1.ListItemdoacaoTitle_quantidade}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.quantidade}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle1.ListItemdoacaoTitle_tipoUnidade}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoUnidade}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle1.ListItemdoacaoTitle_doacaoDoacaoID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.doacaoDoacaoID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{itemdoacaoController.prepareView}" value="#{bundle1.ListItemdoacaoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{itemdoacaoController.prepareEdit}" value="#{bundle1.ListItemdoacaoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{itemdoacaoController.destroy}" value="#{bundle1.ListItemdoacaoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{itemdoacaoController.prepareCreate}" value="#{bundle1.ListItemdoacaoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle1.ListItemdoacaoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

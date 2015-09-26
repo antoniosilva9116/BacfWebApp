@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditRelogiopontoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditRelogiopontoLabel_relogioPontoID}" for="relogioPontoID" />
+                    <h:inputText id="relogioPontoID" value="#{relogiopontoController.selected.relogioPontoID}" title="#{bundle.EditRelogiopontoTitle_relogioPontoID}" required="true" requiredMessage="#{bundle.EditRelogiopontoRequiredMessage_relogioPontoID}"/>
+                    <h:outputLabel value="#{bundle.EditRelogiopontoLabel_dataRegisto}" for="dataRegisto" />
+                    <h:inputText id="dataRegisto" value="#{relogiopontoController.selected.dataRegisto}" title="#{bundle.EditRelogiopontoTitle_dataRegisto}" required="true" requiredMessage="#{bundle.EditRelogiopontoRequiredMessage_dataRegisto}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditRelogiopontoLabel_tipoRegisto}" for="tipoRegisto" />
+                    <h:inputText id="tipoRegisto" value="#{relogiopontoController.selected.tipoRegisto}" title="#{bundle.EditRelogiopontoTitle_tipoRegisto}" required="true" requiredMessage="#{bundle.EditRelogiopontoRequiredMessage_tipoRegisto}"/>
+                    <h:outputLabel value="#{bundle.EditRelogiopontoLabel_voluntarioID}" for="voluntarioID" />
+                    <h:selectOneMenu id="voluntarioID" value="#{relogiopontoController.selected.voluntarioID}" title="#{bundle.EditRelogiopontoTitle_voluntarioID}" required="true" requiredMessage="#{bundle.EditRelogiopontoRequiredMessage_voluntarioID}">
+                        <f:selectItems value="#{voluntarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditRelogiopontoLabel_campanhaID}" for="campanhaID" />
+                    <h:selectOneMenu id="campanhaID" value="#{relogiopontoController.selected.campanhaID}" title="#{bundle.EditRelogiopontoTitle_campanhaID}" required="true" requiredMessage="#{bundle.EditRelogiopontoRequiredMessage_campanhaID}">
+                        <f:selectItems value="#{campanhaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{relogiopontoController.update}" value="#{bundle.EditRelogiopontoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditRelogiopontoViewLink}"/>
+                <br />
+                <h:commandLink action="#{relogiopontoController.prepareList}" value="#{bundle.EditRelogiopontoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditRelogiopontoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListHistoricocampanhaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListHistoricocampanhaEmpty}" rendered="#{historicocampanhaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{historicocampanhaController.items.rowCount > 0}">
+                    <h:outputText value="#{historicocampanhaController.pagination.pageFirstItem + 1}..#{historicocampanhaController.pagination.pageLastItem + 1}/#{historicocampanhaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{historicocampanhaController.previous}" value="#{bundle.Previous} #{historicocampanhaController.pagination.pageSize}" rendered="#{historicocampanhaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{historicocampanhaController.next}" value="#{bundle.Next} #{historicocampanhaController.pagination.pageSize}" rendered="#{historicocampanhaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{historicocampanhaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHistoricocampanhaTitle_historicoCampanhaID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.historicoCampanhaID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHistoricocampanhaTitle_dia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dia}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHistoricocampanhaTitle_horaInicio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.horaInicio}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHistoricocampanhaTitle_horaFim}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.horaFim}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHistoricocampanhaTitle_campanhaID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.campanhaID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{historicocampanhaController.prepareView}" value="#{bundle.ListHistoricocampanhaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{historicocampanhaController.prepareEdit}" value="#{bundle.ListHistoricocampanhaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{historicocampanhaController.destroy}" value="#{bundle.ListHistoricocampanhaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{historicocampanhaController.prepareCreate}" value="#{bundle.ListHistoricocampanhaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListHistoricocampanhaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

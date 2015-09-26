@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateVoluntariosCampanhasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateVoluntariosCampanhasLabel_voluntariosCampanhasID}" for="voluntariosCampanhasID" />
+                    <h:inputText id="voluntariosCampanhasID" value="#{voluntariosCampanhasController.selected.voluntariosCampanhasID}" title="#{bundle.CreateVoluntariosCampanhasTitle_voluntariosCampanhasID}" required="true" requiredMessage="#{bundle.CreateVoluntariosCampanhasRequiredMessage_voluntariosCampanhasID}"/>
+                    <h:outputLabel value="#{bundle.CreateVoluntariosCampanhasLabel_campanhaID}" for="campanhaID" />
+                    <h:selectOneMenu id="campanhaID" value="#{voluntariosCampanhasController.selected.campanhaID}" title="#{bundle.CreateVoluntariosCampanhasTitle_campanhaID}" required="true" requiredMessage="#{bundle.CreateVoluntariosCampanhasRequiredMessage_campanhaID}">
+                        <f:selectItems value="#{campanhaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateVoluntariosCampanhasLabel_voluntarioID}" for="voluntarioID" />
+                    <h:selectOneMenu id="voluntarioID" value="#{voluntariosCampanhasController.selected.voluntarioID}" title="#{bundle.CreateVoluntariosCampanhasTitle_voluntarioID}" required="true" requiredMessage="#{bundle.CreateVoluntariosCampanhasRequiredMessage_voluntarioID}">
+                        <f:selectItems value="#{voluntarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{voluntariosCampanhasController.create}" value="#{bundle.CreateVoluntariosCampanhasSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{voluntariosCampanhasController.prepareList}" value="#{bundle.CreateVoluntariosCampanhasShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateVoluntariosCampanhasIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

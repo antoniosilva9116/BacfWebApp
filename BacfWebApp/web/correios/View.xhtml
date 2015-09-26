@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCorreiosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewCorreiosLabel_correiosID}"/>
+                    <h:outputText value="#{correiosController.selected.correiosID}" title="#{bundle.ViewCorreiosTitle_correiosID}"/>
+                    <h:outputText value="#{bundle.ViewCorreiosLabel_distrito}"/>
+                    <h:outputText value="#{correiosController.selected.distrito}" title="#{bundle.ViewCorreiosTitle_distrito}"/>
+                    <h:outputText value="#{bundle.ViewCorreiosLabel_concelho}"/>
+                    <h:outputText value="#{correiosController.selected.concelho}" title="#{bundle.ViewCorreiosTitle_concelho}"/>
+                    <h:outputText value="#{bundle.ViewCorreiosLabel_localidade}"/>
+                    <h:outputText value="#{correiosController.selected.localidade}" title="#{bundle.ViewCorreiosTitle_localidade}"/>
+                    <h:outputText value="#{bundle.ViewCorreiosLabel_rua}"/>
+                    <h:outputText value="#{correiosController.selected.rua}" title="#{bundle.ViewCorreiosTitle_rua}"/>
+                    <h:outputText value="#{bundle.ViewCorreiosLabel_local}"/>
+                    <h:outputText value="#{correiosController.selected.local}" title="#{bundle.ViewCorreiosTitle_local}"/>
+                    <h:outputText value="#{bundle.ViewCorreiosLabel_codPostal}"/>
+                    <h:outputText value="#{correiosController.selected.codPostal}" title="#{bundle.ViewCorreiosTitle_codPostal}"/>
+                    <h:outputText value="#{bundle.ViewCorreiosLabel_nomePostal}"/>
+                    <h:outputText value="#{correiosController.selected.nomePostal}" title="#{bundle.ViewCorreiosTitle_nomePostal}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{correiosController.destroyAndView}" value="#{bundle.ViewCorreiosDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewCorreiosEditLink}"/>
+                <br />
+                <h:commandLink action="#{correiosController.prepareCreate}" value="#{bundle.ViewCorreiosCreateLink}" />
+                <br />
+                <h:commandLink action="#{correiosController.prepareList}" value="#{bundle.ViewCorreiosShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewCorreiosIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

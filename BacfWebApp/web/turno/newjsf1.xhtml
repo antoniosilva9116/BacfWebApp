@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" 
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:n="http://java.sun.com/jsf/core"
+      xmlns:m="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Banco Alimentar</title>
+
+        <link href="../webdesign/css/fullcalendar/fullcalendar.css" rel="stylesheet" />
+        <link href="../resources/css/bootjsf.css" rel="stylesheet" />
+        <link type="text/css" rel="stylesheet" href="/BacfWebApp/faces/javax.faces.resource/theme.css?ln=primefaces-bootstrap" />
+
+        <style  type="text/css">
+            html, body{
+                margin:0px; padding:0px; font-family: arial; font-size: 8pt;
+                background:#f5f5f5;
+            }
+            #conteudo{
+                padding:20px;
+
+            }
+
+            .global .fc-event-skin{
+                background: #006600 !important;
+            }
+
+            .pessoal .fc-event-skin{
+                background: #003399 !important;
+            }
+        </style>
+        <script type="text/javascript">
+            PrimeFaces.locales['pt'] = {
+                closeText: 'Fechar',
+                prevText: 'Anterior',
+                nextText: 'Próximo',
+                currentText: 'Começo',
+                monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+                dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
+                dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+                weekHeader: 'Semana',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                timeOnlyTitle: 'Só Horas',
+                timeText: 'Tempo',
+                hourText: 'Hora',
+                minuteText: 'Minuto',
+                secondText: 'Segundo',
+                currentText: 'Data Atual',
+                        ampm: false,
+                day: 'Dia',
+                month: 'Mês',
+                week: 'Semana',
+                allDayText: 'Todo Dia'
+            };
+        </script>
+    </h:head>
+    <h:body>
+        <b:container>
+            <div id="page-wrapper" >
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Turnos <small>Criar Turnos</small></h1>
+                        <p>Utilize o formul&aacute;rio abaixo para criar uma campanha.</p>
+
+                        <div id="conteudo">
+
+                            <h1 id="page-header">Calendário</h1>
+
+                            <h:form>
+                                <b:container>
+
+                                    <h:panelGroup id="messagePanel" layout="block">
+                                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                                    </h:panelGroup>
+                                    <br></br>
+                                    <h2 class="page-header">Campanhas <small>datas das campanhas disponiveis </small></h2>
+                                    <p>Utilize o widget para selecionar o dia da campanha.</p>
+
+                                    <p:messages id="mensagens" showDetail="true" />
+
+                                    <p:calendar   value="#{campanhaController.dataSelected.date}" 
+                                                  mindate="#{campanhaController.selected.dataInicio}" 
+                                                  maxdate="#{campanhaController.selected.dataFim}"
+                                                  pattern="dd/MM/yyyy" disabled="#{(campanhaController.isCampanha()==true)?false:true}"
+                                                  >
+                                        <f:param name="campanha" value="#{turnoController.campanha}" /></p:calendar>
+                                    <br/>
+                                    <p><b:commandButton style="margin-top: 15px;" icon="edit"  size="sm" look="primary" 
+                                                        oncomplete="meucalendario.update()" value="  Selecionar"  update="conteudo" />
+                                    </p>
+                                    <p:schedule value="#{turnoController.eventModel}" id="conteudo" initialDate="#{campanhaController.dataSelected.date}" rendered="#{campanhaController.isCampanha()}"
+                                                view="agendaDay" widgetVar="meucalendario"   
+                                                rightHeaderTemplate="agendaDay" locale="pt"
+                                                leftHeaderTemplate="">
+                                        <!-- eventos -->
+                                        <p:ajax event="dateSelect" listener="#{turnoController.addNewTurno}" 
+                                                update="eventDetails" oncomplete="caixaDialogo.show()" />  
+                                        <p:ajax event="eventSelect" listener="#{turnoController.showTurno}" 
+                                                update="eventDetails" oncomplete="caixaDialogo.show()" />  
+                                        <p:ajax event="eventMove" listener="#{turnoController.whenMoved}" 
+                                                update="mensagens" oncomplete="meucalendario.update()" />  
+                                        <p:ajax event="eventResize" listener="#{turnoController.whenSetDate}" 
+                                                update="mensagens" oncomplete="meucalendario.update()"/>  
+
+                                    </p:schedule>
+
+                                    <p:dialog widgetVar="caixaDialogo" 
+                                              header="Turno"  width="800"
+                                              resizable="false" modal="true"
+                                              showEffect="clip" hideEffect="clip" closeOnEscape="true" dynamic="true">
+
+                                        <p:outputPanel 
+                                            id="eventDetails">
+                                            <ui:define name="content">
+                                                <b:row styleClass="show-grid">
+                                                    <b:column col-lg="6" span="6" offset="3"><h:outputText value="span=6 offset=3"/></b:column>
+                                                </b:row>
+                                            </ui:define>
+
+                                            <b:row>
+                                                <b:column span="6" offset="3">
+                                                    <h:outputLabel value="Descri&ccedil;&atilde;o" /> 
+                                                    <p>
+                                                        <p:inputText 
+                                                            id="descricao" 
+                                                            maxlength="60"                                            
+                                                            required="true"
+                                                            value="#{campanhaController.selected.descricao}" disabled="true" />
+                                                    </p>
+                                                </b:column>
+                                            </b:row>
+                                            <b:row>
+                                                <b:column span="6" offset="3">
+                                                    <h:outputLabel value="Hora Início" />  
+                                                    <p>
+                                                        <p:calendar id="inicio" 
+                                                                    required="true"
+                                                                    value="#{turnoController.selected.horaInicio}" 
+                                                                    pattern="dd/MM/yyyy HH:mm" 
+                                                                    mindate="#{campanhaController.getMinRange(campanhaController.dataSelected.date)}" 
+                                                                    maxdate="#{campanhaController.getMaxRange(campanhaController.dataSelected.date)}"/>
+
+                                                    </p>
+                                                </b:column>
+                                            </b:row>
+
+                                            <b:row>
+                                                <b:column span="6" offset="3">
+                                                    <h:outputLabel value="Hora Fim" />  
+                                                    <p>
+                                                        <p:calendar id="fim" 
+                                                                    required="true"
+                                                                    value="#{turnoController.selected.horaFim}" 
+                                                                    pattern="dd/MM/yyyy HH:mm"
+                                                                    mindate="#{campanhaController.getMinRange(campanhaController.dataSelected.date)}" 
+                                                                    maxdate="#{campanhaController.getMaxRange(campanhaController.dataSelected.date)}"/>
+
+                                                    </p>
+                                                </b:column>
+                                            </b:row>
+
+                                        </p:outputPanel>
+
+
+                                        <f:facet name="footer">
+
+                                            <b:row styleClass="show-grid">
+                                                <b:column col-xs="12" col-md="8" col-sm="6" span="9">
+                                                    <b:column col-xs="6" span="9" offset="6">
+                                                        <b:column col-xs="8" span="9" offset="7">
+                                                                <b:commandButton look="primary" size="lg"
+                                                                                 id="pojoSubmit" value=" Guardar " 
+                                                                                 icon="save" update="displayThemes"
+                                                                                 actionListener="#{turnoController.value}" 
+                                                                                 style="margin-top:15px; margin-left: 30px; margin-bottom: 15px;" >
+
+                                                                <f:attribute name="campanha" value="#{campanhaController.selected}" />
+                                                            </b:commandButton>
+
+                                                        </b:column>
+                                                    </b:column>
+                                                </b:column>
+
+
+                                            </b:row>
+
+                                        </f:facet>
+                                    </p:dialog> 
+                                </b:container>
+                            </h:form> 
+                        </div><!-- end fluid-container -->
+                    </div>
+                </div>
+            </div>
+        </b:container>
+    </h:body>
+</html>

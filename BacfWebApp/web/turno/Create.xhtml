@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTurnoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTurnoLabel_turnoID}" for="turnoID" />
+                    <h:inputText id="turnoID" value="#{turnoController.selected.turnoID}" title="#{bundle.CreateTurnoTitle_turnoID}" required="true" requiredMessage="#{bundle.CreateTurnoRequiredMessage_turnoID}"/>
+                    <h:outputLabel value="#{bundle.CreateTurnoLabel_horaInicio}" for="horaInicio" />
+                    <h:inputText id="horaInicio" value="#{turnoController.selected.horaInicio}" title="#{bundle.CreateTurnoTitle_horaInicio}" required="true" requiredMessage="#{bundle.CreateTurnoRequiredMessage_horaInicio}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateTurnoLabel_horaFim}" for="horaFim" />
+                    <h:inputText id="horaFim" value="#{turnoController.selected.horaFim}" title="#{bundle.CreateTurnoTitle_horaFim}" required="true" requiredMessage="#{bundle.CreateTurnoRequiredMessage_horaFim}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateTurnoLabel_dia}" for="dia" />
+                    <h:inputText id="dia" value="#{turnoController.selected.dia}" title="#{bundle.CreateTurnoTitle_dia}" required="true" requiredMessage="#{bundle.CreateTurnoRequiredMessage_dia}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateTurnoLabel_campanhaID}" for="campanhaID" />
+                    <h:selectOneMenu id="campanhaID" value="#{turnoController.selected.campanhaID}" title="#{bundle.CreateTurnoTitle_campanhaID}" required="true" requiredMessage="#{bundle.CreateTurnoRequiredMessage_campanhaID}">
+                        <f:selectItems value="#{campanhaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{turnoController.create}" value="#{bundle.CreateTurnoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{turnoController.prepareList}" value="#{bundle.CreateTurnoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTurnoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

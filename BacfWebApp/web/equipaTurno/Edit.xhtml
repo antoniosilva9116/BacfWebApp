@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEquipaTurnoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEquipaTurnoLabel_equipaTurnoID}" for="equipaTurnoID" />
+                    <h:inputText id="equipaTurnoID" value="#{equipaTurnoController.selected.equipaTurnoID}" title="#{bundle.EditEquipaTurnoTitle_equipaTurnoID}" required="true" requiredMessage="#{bundle.EditEquipaTurnoRequiredMessage_equipaTurnoID}"/>
+                    <h:outputLabel value="#{bundle.EditEquipaTurnoLabel_turnoID}" for="turnoID" />
+                    <h:selectOneMenu id="turnoID" value="#{equipaTurnoController.selected.turnoID}" title="#{bundle.EditEquipaTurnoTitle_turnoID}" required="true" requiredMessage="#{bundle.EditEquipaTurnoRequiredMessage_turnoID}">
+                        <f:selectItems value="#{turnoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEquipaTurnoLabel_equipaID}" for="equipaID" />
+                    <h:selectOneMenu id="equipaID" value="#{equipaTurnoController.selected.equipaID}" title="#{bundle.EditEquipaTurnoTitle_equipaID}" required="true" requiredMessage="#{bundle.EditEquipaTurnoRequiredMessage_equipaID}">
+                        <f:selectItems value="#{equipaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{equipaTurnoController.update}" value="#{bundle.EditEquipaTurnoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEquipaTurnoViewLink}"/>
+                <br />
+                <h:commandLink action="#{equipaTurnoController.prepareList}" value="#{bundle.EditEquipaTurnoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEquipaTurnoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

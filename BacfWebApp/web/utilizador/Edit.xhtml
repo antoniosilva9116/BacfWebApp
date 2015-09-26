@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditUtilizadorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditUtilizadorLabel_utilizadorID}" for="utilizadorID" />
+                    <h:inputText id="utilizadorID" value="#{utilizadorController.selected.utilizadorID}" title="#{bundle.EditUtilizadorTitle_utilizadorID}" required="true" requiredMessage="#{bundle.EditUtilizadorRequiredMessage_utilizadorID}"/>
+                    <h:outputLabel value="#{bundle.EditUtilizadorLabel_password}" for="password" />
+                    <h:inputText id="password" value="#{utilizadorController.selected.password}" title="#{bundle.EditUtilizadorTitle_password}" required="true" requiredMessage="#{bundle.EditUtilizadorRequiredMessage_password}"/>
+                    <h:outputLabel value="#{bundle.EditUtilizadorLabel_userName}" for="userName" />
+                    <h:inputText id="userName" value="#{utilizadorController.selected.userName}" title="#{bundle.EditUtilizadorTitle_userName}" required="true" requiredMessage="#{bundle.EditUtilizadorRequiredMessage_userName}"/>
+                    <h:outputLabel value="#{bundle.EditUtilizadorLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{utilizadorController.selected.email}" title="#{bundle.EditUtilizadorTitle_email}" required="true" requiredMessage="#{bundle.EditUtilizadorRequiredMessage_email}"/>
+                    <h:outputLabel value="#{bundle.EditUtilizadorLabel_grupoID}" for="grupoID" />
+                    <h:selectOneMenu id="grupoID" value="#{utilizadorController.selected.grupoID}" title="#{bundle.EditUtilizadorTitle_grupoID}" required="true" requiredMessage="#{bundle.EditUtilizadorRequiredMessage_grupoID}">
+                        <f:selectItems value="#{grupoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{utilizadorController.update}" value="#{bundle.EditUtilizadorSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditUtilizadorViewLink}"/>
+                <br />
+                <h:commandLink action="#{utilizadorController.prepareList}" value="#{bundle.EditUtilizadorShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditUtilizadorIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateItemdoacaoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateItemdoacaoLabel_itemDoacao}" for="itemDoacao" />
+                    <h:inputText id="itemDoacao" value="#{itemdoacaoController.selected.itemDoacao}" title="#{bundle.CreateItemdoacaoTitle_itemDoacao}" required="true" requiredMessage="#{bundle.CreateItemdoacaoRequiredMessage_itemDoacao}"/>
+                    <h:outputLabel value="#{bundle.CreateItemdoacaoLabel_descricao}" for="descricao" />
+                    <h:inputText id="descricao" value="#{itemdoacaoController.selected.descricao}" title="#{bundle.CreateItemdoacaoTitle_descricao}" />
+                    <h:outputLabel value="#{bundle.CreateItemdoacaoLabel_quantidade}" for="quantidade" />
+                    <h:inputText id="quantidade" value="#{itemdoacaoController.selected.quantidade}" title="#{bundle.CreateItemdoacaoTitle_quantidade}" />
+                    <h:outputLabel value="#{bundle.CreateItemdoacaoLabel_tipoUnidade}" for="tipoUnidade" />
+                    <h:inputText id="tipoUnidade" value="#{itemdoacaoController.selected.tipoUnidade}" title="#{bundle.CreateItemdoacaoTitle_tipoUnidade}" />
+                    <h:outputLabel value="#{bundle.CreateItemdoacaoLabel_doacaoDoacaoID}" for="doacaoDoacaoID" />
+                    <h:selectOneMenu id="doacaoDoacaoID" value="#{itemdoacaoController.selected.doacaoDoacaoID}" title="#{bundle.CreateItemdoacaoTitle_doacaoDoacaoID}" required="true" requiredMessage="#{bundle.CreateItemdoacaoRequiredMessage_doacaoDoacaoID}">
+                        <f:selectItems value="#{doacaoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{itemdoacaoController.create}" value="#{bundle.CreateItemdoacaoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{itemdoacaoController.prepareList}" value="#{bundle.CreateItemdoacaoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateItemdoacaoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

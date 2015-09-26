@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewVoluntarioMaterialTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewVoluntarioMaterialLabel_voluntarioMaterialPK_voluntarioMaterialID}"/>
+                    <h:outputText value="#{voluntarioMaterialController.selected.voluntarioMaterialPK.voluntarioMaterialID}" title="#{bundle.ViewVoluntarioMaterialTitle_voluntarioMaterialPK_voluntarioMaterialID}"/>
+                    <h:outputText value="#{bundle.ViewVoluntarioMaterialLabel_material}"/>
+                    <h:outputText value="#{voluntarioMaterialController.selected.material}" title="#{bundle.ViewVoluntarioMaterialTitle_material}"/>
+                    <h:outputText value="#{bundle.ViewVoluntarioMaterialLabel_relogioponto}"/>
+                    <h:outputText value="#{voluntarioMaterialController.selected.relogioponto}" title="#{bundle.ViewVoluntarioMaterialTitle_relogioponto}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{voluntarioMaterialController.destroyAndView}" value="#{bundle.ViewVoluntarioMaterialDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewVoluntarioMaterialEditLink}"/>
+                <br />
+                <h:commandLink action="#{voluntarioMaterialController.prepareCreate}" value="#{bundle.ViewVoluntarioMaterialCreateLink}" />
+                <br />
+                <h:commandLink action="#{voluntarioMaterialController.prepareList}" value="#{bundle.ViewVoluntarioMaterialShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewVoluntarioMaterialIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

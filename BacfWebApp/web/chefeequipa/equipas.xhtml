@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" 
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:n="http://java.sun.com/jsf/core"
+      xmlns:m="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Banco Alimentar</title>
+         <link href="../webdesign/css/bacf.css" rel="stylesheet" />
+        <!-- Bootstrap core CSS -->
+        <link href="../webdesign/css/bootstrap.css" rel="stylesheet" />
+
+        <link href="../webdesign/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"/>
+        <!-- font Awesome -->
+        <link href="../webdesign/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+        <link href="../webdesign/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+
+        <link href="../webdesign/css/iCheck/minimal/blue.css" rel="stylesheet" type="text/css" />
+
+
+        <!-- Ionicons -->
+        <link href="../webdesign/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+
+        <link href="../webdesign/plugins/fancybox/jquery.fancybox.css" rel="stylesheet"/>
+
+        <link href="../webdesign/plugins/fullcalendar/fullcalendar.css" rel="stylesheet"/>
+
+        <link href="../webdesign/plugins/xcharts/xcharts.min.css" rel="stylesheet"/>
+
+        <link href="../webdesign/plugins/select2/select2.css" rel="stylesheet"/>
+
+
+        <!-- Admin LTE -->
+        <link href="../webdesign/css/AdminLTE.css" rel="stylesheet" />
+
+        <!-- SBAdmin Style -->
+        <link href="../webdesign/css/sb-admin.css" rel="stylesheet" />
+        <link href="../webdesign/css/plugins/timeline/timeline.css" rel="stylesheet"/>
+        <link href="../webdesign/css/style.css" rel="stylesheet"/>
+
+        <link href="../resources/css/bootjsf.css" rel="stylesheet" />
+        <link type="text/css" rel="stylesheet" href="/BacfWebApp/faces/javax.faces.resource/theme.css?ln=primefaces-bootstrap" />
+
+    </h:head>
+    <h:body onload="#{campanhaController.isCampanha()}">
+        <b:container>
+            <div id="page-wrapper" >
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Equipas <small>Criar Turnos</small></h1>
+                        <p>Utilize o formul&aacute;rio abaixo para criar os equipas.</p>
+
+                        <div id="conteudo">
+                            <h:form>
+                                
+                                <br></br>
+                                <b:row>
+
+                                    <b:column col-xs="6" span="6">
+                                        <h:outputLabel value="Supermercado"/>                                         
+                                        <p:selectOneMenu value="#{estabelecimentoController.selected}" 
+                                                         style="width:100%; background:#ffffff;"
+                                                         converter="#{estabelecimentoConverter}">  
+                                            <f:selectItems value="#{estabelecimentoController.all}" itemLabel="#{estabelecimento}" 
+                                                           itemValue="#{estabelecimento}" var="estabelecimento"/>                                             
+                                        </p:selectOneMenu> 
+                                    </b:column>
+                                    <br></br>                                        <br></br>
+
+                                    <br></br>
+
+                                </b:row>
+                                <br></br>
+                                <b:jumbotron>
+                                     <h2>Volunt&aacute;rios dispon&iacute;veis. </h2>
+                                    <p>Selecione os volunt&aacute;rios que pretende adicionar.</p>                                                       
+                                    <b:row>
+                                        <div class="col-md-6">
+                                            <div class="table-responsive">
+                                                <p:growl id="msg" showDetail="true" escape="false"  sticky="true" />
+                                                    <p:pickList value="#{equipaController.voluntarios}" 
+                                                                var="voluntario" effect="" itemLabel="#{voluntario}" 
+                                                                itemValue="#{voluntario}" showSourceControls="true" 
+                                                                showTargetControls="true" showSourceFilter="true" 
+                                                                showTargetFilter="true" filterMatchMode="contains" converter="#{voluntarioConverter}">
+
+                                                            <f:facet  name="sourceCaption">Dispon&iacute;veis</f:facet>
+                                                            <f:facet name="targetCaption">Adicionados</f:facet>
+                                                     
+                                                            <p:ajax event="transfer" listener="#{equipaController.onTransfer}" update="msg" />
+                                                     
+                                                            <p:column>
+                                                                    <h:outputText value="#{voluntario.getNome()}" />
+                                                                </p:column>
+                                                        </p:pickList>
+
+                                            </div>
+                                        </div>
+                                    </b:row>   
+                                    <br></br>                                    <br></br>
+
+                                    <b:row>
+                                        <b:column col-xs="12" col-md="8" col-sm="6" span="9">
+                                            <b:column col-xs="6" span="9" offset="6">
+                                                <b:column col-xs="8" span="9" offset="7">
+                                                        <b:commandButton look="primary"
+                                                                         id="pojoSubmit" value=" Guardar " 
+                                                                         icon="save" update="displayThemes"
+                                                                         action="#{equipaController.create}" >
+
+                                                    </b:commandButton>
+
+                                                </b:column>
+                                            </b:column>
+                                        </b:column>
+
+
+                                    </b:row>                                            
+                                </b:jumbotron>
+
+
+
+
+                            </h:form> 
+                        </div><!-- end fluid-container -->
+                    </div>
+                </div>
+            </div>
+        </b:container>
+    </h:body>
+</html>

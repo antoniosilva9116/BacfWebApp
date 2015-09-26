@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEstabelecimentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListEstabelecimentoEmpty}" rendered="#{estabelecimentoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{estabelecimentoController.items.rowCount > 0}">
+                    <h:outputText value="#{estabelecimentoController.pagination.pageFirstItem + 1}..#{estabelecimentoController.pagination.pageLastItem + 1}/#{estabelecimentoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{estabelecimentoController.previous}" value="#{bundle.Previous} #{estabelecimentoController.pagination.pageSize}" rendered="#{estabelecimentoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{estabelecimentoController.next}" value="#{bundle.Next} #{estabelecimentoController.pagination.pageSize}" rendered="#{estabelecimentoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{estabelecimentoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEstabelecimentoTitle_estabelecimentoID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estabelecimentoID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEstabelecimentoTitle_codigo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEstabelecimentoTitle_nome}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nome}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEstabelecimentoTitle_cadeia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cadeia}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEstabelecimentoTitle_gerente}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.gerente}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEstabelecimentoTitle_telefone}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telefone}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEstabelecimentoTitle_fax}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fax}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEstabelecimentoTitle_telemovel}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telemovel}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEstabelecimentoTitle_tipo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEstabelecimentoTitle_area}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.area}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEstabelecimentoTitle_hrams}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hrams}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEstabelecimentoTitle_hrfms}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hrfms}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEstabelecimentoTitle_hrfts}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hrfts}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEstabelecimentoTitle_hramd}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hramd}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEstabelecimentoTitle_hrfmd}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hrfmd}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEstabelecimentoTitle_hratd}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hratd}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEstabelecimentoTitle_hrftd}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hrftd}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEstabelecimentoTitle_tipoDoEstabelecimento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoDoEstabelecimento}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEstabelecimentoTitle_correiosID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.correiosID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{estabelecimentoController.prepareView}" value="#{bundle.ListEstabelecimentoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{estabelecimentoController.prepareEdit}" value="#{bundle.ListEstabelecimentoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{estabelecimentoController.destroy}" value="#{bundle.ListEstabelecimentoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{estabelecimentoController.prepareCreate}" value="#{bundle.ListEstabelecimentoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListEstabelecimentoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

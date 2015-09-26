@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle1.ViewItemdoacaoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle1.ViewItemdoacaoLabel_itemDoacao}"/>
+                    <h:outputText value="#{itemdoacaoController.selected.itemDoacao}" title="#{bundle1.ViewItemdoacaoTitle_itemDoacao}"/>
+                    <h:outputText value="#{bundle1.ViewItemdoacaoLabel_descricao}"/>
+                    <h:outputText value="#{itemdoacaoController.selected.descricao}" title="#{bundle1.ViewItemdoacaoTitle_descricao}"/>
+                    <h:outputText value="#{bundle1.ViewItemdoacaoLabel_quantidade}"/>
+                    <h:outputText value="#{itemdoacaoController.selected.quantidade}" title="#{bundle1.ViewItemdoacaoTitle_quantidade}"/>
+                    <h:outputText value="#{bundle1.ViewItemdoacaoLabel_tipoUnidade}"/>
+                    <h:outputText value="#{itemdoacaoController.selected.tipoUnidade}" title="#{bundle1.ViewItemdoacaoTitle_tipoUnidade}"/>
+                    <h:outputText value="#{bundle1.ViewItemdoacaoLabel_doacaoDoacaoID}"/>
+                    <h:outputText value="#{itemdoacaoController.selected.doacaoDoacaoID}" title="#{bundle1.ViewItemdoacaoTitle_doacaoDoacaoID}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{itemdoacaoController.destroyAndView}" value="#{bundle1.ViewItemdoacaoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle1.ViewItemdoacaoEditLink}"/>
+                <br />
+                <h:commandLink action="#{itemdoacaoController.prepareCreate}" value="#{bundle1.ViewItemdoacaoCreateLink}" />
+                <br />
+                <h:commandLink action="#{itemdoacaoController.prepareList}" value="#{bundle1.ViewItemdoacaoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle1.ViewItemdoacaoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

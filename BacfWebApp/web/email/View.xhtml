@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEmailTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEmailLabel_emailID}"/>
+                    <h:outputText value="#{emailController.selected.emailID}" title="#{bundle.ViewEmailTitle_emailID}"/>
+                    <h:outputText value="#{bundle.ViewEmailLabel_dataEnvio}"/>
+                    <h:outputText value="#{emailController.selected.dataEnvio}" title="#{bundle.ViewEmailTitle_dataEnvio}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewEmailLabel_lead}"/>
+                    <h:outputText value="#{emailController.selected.lead}" title="#{bundle.ViewEmailTitle_lead}"/>
+                    <h:outputText value="#{bundle.ViewEmailLabel_corpo}"/>
+                    <h:outputText value="#{emailController.selected.corpo}" title="#{bundle.ViewEmailTitle_corpo}"/>
+                    <h:outputText value="#{bundle.ViewEmailLabel_utilizadorRemetenteID}"/>
+                    <h:outputText value="#{emailController.selected.utilizadorRemetenteID}" title="#{bundle.ViewEmailTitle_utilizadorRemetenteID}"/>
+                    <h:outputText value="#{bundle.ViewEmailLabel_utilizadorDestinatarioID}"/>
+                    <h:outputText value="#{emailController.selected.utilizadorDestinatarioID}" title="#{bundle.ViewEmailTitle_utilizadorDestinatarioID}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{emailController.destroyAndView}" value="#{bundle.ViewEmailDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewEmailEditLink}"/>
+                <br />
+                <h:commandLink action="#{emailController.prepareCreate}" value="#{bundle.ViewEmailCreateLink}" />
+                <br />
+                <h:commandLink action="#{emailController.prepareList}" value="#{bundle.ViewEmailShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewEmailIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

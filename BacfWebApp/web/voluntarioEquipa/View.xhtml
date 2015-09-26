@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewVoluntarioEquipaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewVoluntarioEquipaLabel_voluntarioEquipaID}"/>
+                    <h:outputText value="#{voluntarioEquipaController.selected.voluntarioEquipaID}" title="#{bundle.ViewVoluntarioEquipaTitle_voluntarioEquipaID}"/>
+                    <h:outputText value="#{bundle.ViewVoluntarioEquipaLabel_voluntarioID}"/>
+                    <h:outputText value="#{voluntarioEquipaController.selected.voluntarioID}" title="#{bundle.ViewVoluntarioEquipaTitle_voluntarioID}"/>
+                    <h:outputText value="#{bundle.ViewVoluntarioEquipaLabel_equipaID}"/>
+                    <h:outputText value="#{voluntarioEquipaController.selected.equipaID}" title="#{bundle.ViewVoluntarioEquipaTitle_equipaID}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{voluntarioEquipaController.destroyAndView}" value="#{bundle.ViewVoluntarioEquipaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewVoluntarioEquipaEditLink}"/>
+                <br />
+                <h:commandLink action="#{voluntarioEquipaController.prepareCreate}" value="#{bundle.ViewVoluntarioEquipaCreateLink}" />
+                <br />
+                <h:commandLink action="#{voluntarioEquipaController.prepareList}" value="#{bundle.ViewVoluntarioEquipaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewVoluntarioEquipaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

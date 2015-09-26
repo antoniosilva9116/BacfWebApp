@@ -1,0 +1,534 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core"  
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <link href="../webdesign/css/bacf.css" rel="stylesheet" />
+
+        <link href="../webdesign/css/bootstrap.css" rel="stylesheet" />
+        <link href="../webdesign/css/AdminLTE.css" rel="stylesheet" />
+        <link href="../webdesign/css/sb-admin.css" rel="stylesheet" />
+    </h:head>
+    <h:body onload="CallWebServiceGetEmails('${utilizadorController.user.getUtilizadorID()}');">
+        <br></br>
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Profile <small>Profile Overview</small></h1>
+                    <ol class="breadcrumb">
+                        <li class="active"><i class="fa fa-dashboard"></i> Profile</li>
+                    </ol>
+                    <div class="alert alert-success alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        Welcome to Banco Alimentar Web App <!--by <a class="alert-link" href="http://startbootstrap.com">Start Bootstrap</a>! Feel free to use this template for your admin needs! We are using a few different plugins to handle the dynamic tables and charts, so make sure you check out the necessary documentation links provided.-->
+                    </div>
+                </div>
+            </div><!-- /.row -->
+            <div class="col-lg-12">
+
+                <div class="bs-example">
+                    <ul class="nav nav-tabs" style="margin-bottom: 15px;">
+                        <li class="active"><a href="#Messages" data-toggle="tab">Messages</a></li>
+                        <li><a href="#Events" data-toggle="tab">Events</a></li>
+
+                        <li><a href="#Disponibilidade" data-toggle="tab">Disponibilidade</a></li>
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Dropdown <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#dropdown1" data-toggle="tab">Action</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#dropdown2" data-toggle="tab">Another action</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane fade active in" id="Messages">
+
+                            <div class="col-lg-12">
+                                <!-- TO DO List -->
+                                <div class="box box-primary">
+                                    <div class="box-header">
+                                        <i class="fa fa-envelope-o"></i>
+                                        <h3 class="box-title">Message Box</h3>
+                                        <div class="box-tools pull-right">
+                                            <ul class="pagination pagination-sm inline">
+                                                <li><a href="#">&laquo;</a></li>
+                                                <li><a href="#">1</a></li>
+                                                <li><a href="#">2</a></li>
+                                                <li><a href="#">3</a></li>
+                                                <li><a href="#">&raquo;</a></li>
+                                            </ul>
+                                        </div>
+                                    </div><!-- /.box-header -->
+                                    <div class="col-md-3 col-sm-4">
+                                        <div style="margin-top: 15px;">
+                                            <ul class="nav nav-pills nav-stacked">
+                                                <li class="header">Folders</li>
+                                                <li id="0" class="active" onclick="changeMailBox('0', '${utilizadorController.user.getUtilizadorID()}')"><a href="#"><i class="fa fa-inbox"></i> Inbox (14)</a></li>
+                                                <li id="1" onclick="changeMailBox('1', '${utilizadorController.user.getUtilizadorID()}')"><a href="#"><i class="fa fa-mail-forward"></i> Sent</a></li>                                                    
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <br></br>
+                                    <div class="panel-body">
+                                        <div class="col-md-9 col-sm-8">
+                                            <div class="todo-list">
+                                                <!-- .panel-heading -->
+                                                <div class="panel-body">
+                                                    <div class="panel-group" id="accordion">
+                                                        <!-- Default box -->
+                                                        <div class="panel box-info">
+                                                            <div class="panel-heading">
+                                                                <span class="panel-title">
+
+                                                                    <div class="pull-right">
+                                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+
+                                                                            <i class="fa fa-minus"></i>
+
+                                                                        </a>
+                                                                    </div>
+                                                                    <input type="checkbox" /> <!----> Message 1
+
+
+
+                                                                </span>
+                                                            </div>
+                                                            <div id="collapseOne" class="panel-collapse collapse in">
+                                                                <div class="panel-body">
+                                                                    <p><!---->Message From Alguem</p>
+                                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                                    <!-- -->
+                                                                    <hr></hr>
+                                                                    <!-- Emphasis label -->
+                                                                    <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 minutes 
+                                                                    </small>
+                                                                    <!-- General tools such as edit or delete-->
+                                                                    <div class="pull-right">
+                                                                        <div class="tools">
+                                                                            <a class="" data-toggle="modal" data-target="#compose-modal"><i class="fa fa-edit"></i></a>
+                                                                            <i class="fa fa-trash-o"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div><!-- /.box -->          
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="box-tools pull-right">
+                                            <!-- /.box-body -->
+                                            <div class="box-footer clearfix no-border">
+                                                <div class="">
+                                                    <!-- compose message btn -->
+                                                    <a class="btn btn-block btn-primary" data-toggle="modal" data-target="#compose-modal"><i class="fa fa-pencil"></i> Compose Message</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div><!-- /.box -->
+                            </div>
+                            <!-- /.col-lg-12 -->
+                        </div>
+                        <div class="tab-pane fade" id="Events">
+                            <!-- /.panel -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <i class="fa fa-clock-o fa-fw"></i> Timeline
+                                </div>
+                                <!-- /.panel-heading -->
+                                <div class="panel-body">
+                                    <ul class="timeline">
+                                        <li>
+                                            <div class="timeline-badge"><i class="fa fa-check"></i>
+                                            </div>
+                                            <div class="timeline-panel">
+                                                <div class="timeline-heading">
+                                                    <h4 class="timeline-title">Timeline Event</h4>
+                                                    <p>
+                                                        <small class="text-muted"><i class="fa fa-time"></i> 11 hours ago via Twitter</small>
+                                                    </p>
+                                                </div>
+                                                <div class="timeline-body">
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="timeline-inverted">
+                                            <div class="timeline-badge warning"><i class="fa fa-credit-card"></i>
+                                            </div>
+                                            <div class="timeline-panel">
+                                                <div class="timeline-heading">
+                                                    <h4 class="timeline-title">Timeline Event</h4>
+                                                </div>
+                                                <div class="timeline-body">
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-badge danger"><i class="fa fa-credit-card"></i>
+                                            </div>
+                                            <div class="timeline-panel">
+                                                <div class="timeline-heading">
+                                                    <h4 class="timeline-title">Timeline Event</h4>
+                                                </div>
+                                                <div class="timeline-body">
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="timeline-inverted">
+                                            <div class="timeline-panel">
+                                                <div class="timeline-heading">
+                                                    <h4 class="timeline-title">Timeline Event</h4>
+                                                </div>
+                                                <div class="timeline-body">
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-badge info"><i class="fa fa-save"></i>
+                                            </div>
+                                            <div class="timeline-panel">
+                                                <div class="timeline-heading">
+                                                    <h4 class="timeline-title">Timeline Event</h4>
+                                                </div>
+                                                <div class="timeline-body">
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
+                                                    <hr></hr>
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                                                            <i class="fa fa-cog"></i> 
+                                                            <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu" role="menu">
+                                                            <li><a href="#">Action</a>
+                                                            </li>
+                                                            <li><a href="#">Another action</a>
+                                                            </li>
+                                                            <li><a href="#">Something else here</a>
+                                                            </li>
+                                                            <li class="divider"></li>
+                                                            <li><a href="#">Separated link</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="timeline-heading">
+                                                    <h4 class="timeline-title">Timeline Event</h4>
+                                                </div>
+                                                <div class="timeline-body">
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="timeline-inverted">
+                                            <div class="timeline-badge success"><i class="fa fa-thumbs-up"></i>
+                                            </div>
+                                            <div class="timeline-panel">
+                                                <div class="timeline-heading">
+                                                    <h4 class="timeline-title">Timeline Event</h4>
+                                                </div>
+                                                <div class="timeline-body">
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- /.panel-body -->
+                            </div>
+                            <!-- /.panel --> 
+                        </div>
+                        <div class="tab-pane fade" id="Disponibilidade">
+                            <!-- /.panel -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <i class="fa fa-clock-o fa-fw"></i> Disp.
+                                </div>
+                                <div class="col-lg-12">
+                                    <h3 class="page-header">Disponibilidade Campanha <small>Indique os dias disponíveis</small></h3>
+                                </div>
+                                <p></p>
+                                <!-- /.panel-heading -->
+                                <div class="panel-body">
+                                    <div class="row-disp">
+                                        <div class="col-lg-3 col-sm-0">
+                                            <div class="form-group" >
+                                                <label ><h4>Segunda-Feira</h4></label>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsSeg" id="optionsRadiosSegManha1" value="option1" /> Manha
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsSeg" id="optionsRadiosSegTarde2" value="option2"/> Tarde
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsSeg" id="optionsRadiosSegNoite3" value="option3"/> Noite
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsSeg" id="optionsRadioSegSem0" value="option4"/> Sem 
+                                                    </label>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                        <div class="col-lg-3 col-sm-0">
+                                            <div class="form-group" >
+                                                <label ><h4>Terça-Feira</h4></label>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsTer" id="optionsRadiosTerManha1" value="option1" /> Manha
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsTer" id="optionsRadiosTerTarde2" value="option2"/> Tarde
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsTer" id="optionsRadiosTerNoite3" value="option3"/> Noite
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsTer" id="optionsRadiosTerSem0" value="option4"/> Sem 
+                                                    </label>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-sm-0">
+                                            <div class="form-group" >
+                                                <label><h4>Quarta-Feira</h4></label>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsQuar" id="optionsRadiosQuarManha1" value="option1" /> Manha
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsQuar" id="optionsRadiosQuarTarde2" value="option2"/> Tarde
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsQuar" id="optionsRadiosQuarNoite3" value="option3"/> Noite
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsQuar" id="optionsRadiosQuarSem0" value="option4"/> Sem 
+                                                    </label>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-sm-0">
+                                            <div class="form-group" >
+                                                <label ><h4>Quinta-Feira</h4></label>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsQuin" id="optionsRadiosQuinManha1" value="option1" /> Manha
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsQuin" id="optionsRadiosQuinTarde2" value="option2"/> Tarde
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsQuin" id="optionsRadiosQuinNoite3" value="option3"/> Noite
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsQuin" id="optionsRadiosQuinSem0" value="option4"/> Sem 
+                                                    </label>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row-disp" >
+                                        <div class="col-lg-3 col-sm-0">
+                                            <div class="form-group" >
+                                                <label ><h4>Sexta-Feira</h4></label>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsSex" id="optionsRadiosSexManha1" value="option1" /> Manha
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsSex" id="optionsRadiosSexTarde2" value="option2"/> Tarde
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsSex" id="optionsRadiosSexNoite3" value="option3"/> Noite
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsSex" id="optionsRadiosSexSem0" value="option4"/> Sem 
+                                                    </label>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-sm-0">
+                                            <div class="form-group" >
+                                                <label><h4>Sábado</h4></label>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsSab" id="optionsRadiosSabManha1" value="option1" /> Manha
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsSab" id="optionsRadiosSabTarde2" value="option2"/> Tarde
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsSab" id="optionsRadiosSabNoite3" value="option3"/> Noite
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsSab" id="optionsRadiosSabSem0" value="option4"/> Sem 
+                                                    </label>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-sm-0">
+                                            <div class="form-group" >
+                                                <label><h4>Domingo</h4></label>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsDom" id="optionsRadiosManha1" value="option1" /> Manha
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsDom" id="optionsRadiosDomTarde2" value="option2"/> Tarde
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsDom" id="optionsRadiosDomNoite3" value="option3"/> Noite
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsDom" id="optionsRadiosDomSem0" value="option4"/> Sem 
+                                                    </label>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-sm-0">
+                                            <div class="form-group" >
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row-disp" align="right">
+
+
+                                </div>
+                                <!-- /.panel-body -->
+                            </div>
+                            <!-- /.panel --> 
+                        </div>
+                        <div class="tab-pane fade" id="dropdown1">
+                            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
+                        </div>
+                        <div class="tab-pane fade" id="dropdown2">
+                            <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <!-- COMPOSE MESSAGE MODAL -->
+        <div class="modal fade" id="compose-modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title"><i class="fa fa-envelope-o"></i> Compose New Message</h4>
+                    </div>
+                    <h:form>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">TO:</span>
+                                    <b:inputText value="#{emailController.emailTo}" type="email" styleClass="form-control" placeholder="Email TO"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Subject:</span>
+                                    <b:inputText value="#{emailController.subject}" type="email" styleClass="form-control" placeholder="Subject"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <p:inputTextarea value="#{emailController.message}" id="email_message" styleClass="form-control" placeholder="Message" style="height: 120px;"></p:inputTextarea>
+                            </div>
+                            <div class="form-group">                                
+                                <div class="btn btn-success btn-file">
+                                    <i class="fa fa-paperclip text-center"> Attachment</i> 
+                                    <input type="file" name="attachment"/>
+                                </div>
+                                <p class="help-block">Max. 32MB</p>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer clearfix">
+
+                            <button type="button" class="btn btn-danger pull-left" data-dismiss="modal"><i class="fa fa-times"></i> Discard</button>
+
+                            <!--<button type="submit" class="btn btn-primary pull-left"><i class="fa fa-envelope"></i> Send Message</button>-->
+                            <b:commandButton value=" Send Message" icon="envelope" actionListener="#{emailController.values}" look="primary">
+                                <f:attribute name="utilizadorRemetente" value="#{utilizadorController.selected}" />   
+                            </b:commandButton>
+                        </div>
+                    </h:form>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        
+    </h:body>
+</html>
+

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateVoluntarioEquipaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateVoluntarioEquipaLabel_voluntarioEquipaID}" for="voluntarioEquipaID" />
+                    <h:inputText id="voluntarioEquipaID" value="#{voluntarioEquipaController.selected.voluntarioEquipaID}" title="#{bundle.CreateVoluntarioEquipaTitle_voluntarioEquipaID}" required="true" requiredMessage="#{bundle.CreateVoluntarioEquipaRequiredMessage_voluntarioEquipaID}"/>
+                    <h:outputLabel value="#{bundle.CreateVoluntarioEquipaLabel_voluntarioID}" for="voluntarioID" />
+                    <h:selectOneMenu id="voluntarioID" value="#{voluntarioEquipaController.selected.voluntarioID}" title="#{bundle.CreateVoluntarioEquipaTitle_voluntarioID}" required="true" requiredMessage="#{bundle.CreateVoluntarioEquipaRequiredMessage_voluntarioID}">
+                        <f:selectItems value="#{voluntarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateVoluntarioEquipaLabel_equipaID}" for="equipaID" />
+                    <h:selectOneMenu id="equipaID" value="#{voluntarioEquipaController.selected.equipaID}" title="#{bundle.CreateVoluntarioEquipaTitle_equipaID}" required="true" requiredMessage="#{bundle.CreateVoluntarioEquipaRequiredMessage_equipaID}">
+                        <f:selectItems value="#{equipaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{voluntarioEquipaController.create}" value="#{bundle.CreateVoluntarioEquipaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{voluntarioEquipaController.prepareList}" value="#{bundle.CreateVoluntarioEquipaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateVoluntarioEquipaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

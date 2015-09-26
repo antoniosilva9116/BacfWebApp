@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCorreiosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCorreiosLabel_correiosID}" for="correiosID" />
+                    <h:inputText id="correiosID" value="#{correiosController.selected.correiosID}" title="#{bundle.EditCorreiosTitle_correiosID}" required="true" requiredMessage="#{bundle.EditCorreiosRequiredMessage_correiosID}"/>
+                    <h:outputLabel value="#{bundle.EditCorreiosLabel_distrito}" for="distrito" />
+                    <h:inputText id="distrito" value="#{correiosController.selected.distrito}" title="#{bundle.EditCorreiosTitle_distrito}" />
+                    <h:outputLabel value="#{bundle.EditCorreiosLabel_concelho}" for="concelho" />
+                    <h:inputText id="concelho" value="#{correiosController.selected.concelho}" title="#{bundle.EditCorreiosTitle_concelho}" />
+                    <h:outputLabel value="#{bundle.EditCorreiosLabel_localidade}" for="localidade" />
+                    <h:inputText id="localidade" value="#{correiosController.selected.localidade}" title="#{bundle.EditCorreiosTitle_localidade}" />
+                    <h:outputLabel value="#{bundle.EditCorreiosLabel_rua}" for="rua" />
+                    <h:inputText id="rua" value="#{correiosController.selected.rua}" title="#{bundle.EditCorreiosTitle_rua}" />
+                    <h:outputLabel value="#{bundle.EditCorreiosLabel_local}" for="local" />
+                    <h:inputText id="local" value="#{correiosController.selected.local}" title="#{bundle.EditCorreiosTitle_local}" />
+                    <h:outputLabel value="#{bundle.EditCorreiosLabel_codPostal}" for="codPostal" />
+                    <h:inputText id="codPostal" value="#{correiosController.selected.codPostal}" title="#{bundle.EditCorreiosTitle_codPostal}" />
+                    <h:outputLabel value="#{bundle.EditCorreiosLabel_nomePostal}" for="nomePostal" />
+                    <h:inputText id="nomePostal" value="#{correiosController.selected.nomePostal}" title="#{bundle.EditCorreiosTitle_nomePostal}" />
+                </h:panelGrid>
+                <h:commandLink action="#{correiosController.update}" value="#{bundle.EditCorreiosSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCorreiosViewLink}"/>
+                <br />
+                <h:commandLink action="#{correiosController.prepareList}" value="#{bundle.EditCorreiosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCorreiosIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
